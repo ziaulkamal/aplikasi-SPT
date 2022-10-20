@@ -1,2 +1,1 @@
 # aplikasi-SPT
-akri
