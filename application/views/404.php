@@ -461,7 +461,7 @@
         </div>
         <div class="col-md-8 offset-md-2">
           <h3>404 - Halaman Tidak Ditemukan</h3>
-          <p class="sub-content">Halaman yang anda cari tidak ditemukan. Pastikan anda mengakses fitur dengan benar</p><a class="btn btn-primary btn-lg" href="">Kembali Ke Halaman Utama</a>
+          <p class="sub-content">Halaman yang anda cari tidak ditemukan. Pastikan anda mengakses fitur dengan benar</p><a class="btn btn-primary btn-lg" href="<?= base_url() ?>">Kembali Ke Halaman Utama</a>
         </div>
       </div>
     </div>

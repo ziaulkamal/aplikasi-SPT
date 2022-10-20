@@ -6,7 +6,11 @@
         <li class="back-btn">
           <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
         </li>
-
+        <li class="sidebar-main-title">
+                            <div>
+                              <h6>Fitur</h6>
+                            </div>
+                          </li>
         <li><a class="nav-link menu-title link-nav" href=""><i data-feather="home"></i><span>Beranda</span></a>
 
         </li>
@@ -32,8 +36,16 @@
         </li>
         <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="layout"></i><span>Penduduk</span></a>
           <ul class="nav-submenu menu-content">
-            <li><a href="#">Daftar Penduduk</a></li>
+            <li><a href="<?= base_url('penduduk/_tambah') ?>">Daftar Penduduk</a></li>
             <li><a href="#">Layanan Yang Digunakan</a></li>
+            <!-- <li><a href="#">Verifikasi Dokumen</a></li> -->
+          </ul>
+        </li>
+        <li class="sidebar-main-title"> <div> <h6>Extra</h6> </div> </li>
+        <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="layout"></i><span>Pengaturan</span></a>
+          <ul class="nav-submenu menu-content">
+            <li><a href="<?= base_url('penduduk/_tambah') ?>">Permintaan Akun Yang Mendaftar</a></li>
+            <li><a href="#">Atur Penggunaan Akun</a></li>
             <!-- <li><a href="#">Verifikasi Dokumen</a></li> -->
           </ul>
         </li>

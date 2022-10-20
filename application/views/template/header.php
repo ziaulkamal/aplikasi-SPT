@@ -42,8 +42,8 @@
         <div class="page-main-header">
           <div class="main-header-right row m-0">
             <div class="main-header-left">
-              <div class="logo-wrapper"><a href="index.html"><img class="img-fluid" src="<?= base_url('assets_sys/') ?>images/logo/logo.png" alt=""></a></div>
-              <div class="dark-logo-wrapper"><a href="index.html"><img class="img-fluid" src="<?= base_url('assets_sys/') ?>images/logo/dark-logo.png" alt=""></a></div>
+              <div class="logo-wrapper"><a href="<?= base_url(); ?>"><img class="img-fluid" src="<?= base_url('assets_sys/') ?>images/logo/logo-sibatuah.png" alt="<?= $title; ?>"></a></div>
+              <div class="dark-logo-wrapper"><a href="<?= base_url(); ?>"><img class="img-fluid" src="<?= base_url('assets_sys/') ?>images/logo/logo-sibatuah.png" alt="<?= $title; ?>"></a></div>
               <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle"></i></div>
             </div>
             <div class="left-menu-header col">
@@ -62,8 +62,8 @@
           <header class="main-nav">
             <div class="sidebar-user text-center"><img class="img-90 rounded-circle" src="<?= base_url('assets_sys/') ?>images/dashboard/1.png" alt="">
               <div class="badge-bottom"><span class="badge badge-primary">New</span></div><a href="user-profile.html">
-                <h6 class="mt-3 f-14 f-w-600">Emay Walter</h6></a>
-                <p class="mb-0 font-roboto">Human Resources Department</p>
+                <h6 class="mt-3 f-14 f-w-600">Ziaul Kamal</h6></a>
+                <p class="mb-0 font-roboto">Backend Developer</p>
               </div>
               <?php $this->load->view('template/sidebar'); ?>
             </header>

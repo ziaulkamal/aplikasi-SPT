@@ -6,7 +6,7 @@
           <p class="mb-0">Copyright 2022 © SiBatuah Apps.</p>
         </div>
         <div class="col-md-6">
-          <p class="pull-right mb-0">Develop By Ziaul Kamal </p>
+          <p class="pull-right mb-0">Develop By <a href="https://www.linkedin.com/in/ziaulkamal/"><strong>Ziaul Kamal</strong></a> </p>
         </div>
       </div>
     </div>
