@@ -3,7 +3,7 @@
     <div class="page-header">
       <div class="col-sm-12">
         <div class="card">
-          <div class="card-header pb-0">
+          <div class="card-header">
             <h5><?php if (!isset($set)) {
               echo $title;
             }else {
@@ -13,7 +13,6 @@
           </div>
           <?php
           echo validation_errors('<div class="alert alert-danger dark alert-dismissible fade show" role="alert">',' <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button> </div>');
-
           if (isset($set) && $set == 'lokal') { ?>
             <div class="card-body">
               <form class="theme-form" method="POST" action="<?= base_url('penduduk/_process/tambah') ?>" enctype="multipart/form-data">
@@ -147,7 +146,12 @@
           <?php } ?>
         </div>
       </div>
-
+      <?php if ($this->session->flashdata('msg')) { ?>
+        <div class="alert alert-success outline alert-dismissible fade show" role="alert">
+          <p><b> <?= $this->session->flashdata('msg') ?>! </b>Data sudah di update.</p>
+          <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <?php } ?>
     </div>
   </div>
 </div>

@@ -24,6 +24,10 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/flag-icon.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/feather-icon.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/bootstrap.css">
+    <?php if (isset($opt) && $opt == 'table') { ?>
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/datatable-extension.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/datatables.css">
+    <?php } ?>
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/style.css">
     <link id="color" rel="stylesheet" href="<?= base_url('assets_sys/') ?>css/color-1.css" media="screen">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/responsive.css">

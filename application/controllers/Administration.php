@@ -26,17 +26,27 @@ class Administration extends CI_Controller{
 
   function penduduk_reg($set)
   {
-    $get_gampong = $this->crud->get_gampong_all()->result();
+    $get_gampong = $this->crud->get_gampong_all_lokal()->result();
     $count_gampong = $this->crud->get_gampong_all()->num_rows();
     $data = array(
       'title' => 'Tambah Penduduk',
       'opt'   => 'form',
-      'set'   => $set,
       'page'  => 'page/penduduk/add_penduduk',
+      'set'   => $set,
       'db'    => $get_gampong,
       'count' => $count_gampong
     );
+    $this->load->view('main', $data);
+  }
 
+  function penduduk_select()
+  {
+
+    $data = array(
+      'title' => 'Tambah Penduduk',
+      'opt'   => 'form',
+      'page'  => 'page/penduduk/add_penduduk',
+    );
     $this->load->view('main', $data);
   }
 
@@ -50,44 +60,19 @@ class Administration extends CI_Controller{
       $this->penduduk_reg($typeSet);
     }else {
       if ($typeSet == 'lokal') {
-
-        $_penduduk['alamatPid'] = 'L'.time();
-        $_penduduk['gampongPid'] = $this->input->post('gampong',TRUE);
-        $_alamat = array(
-          'idA'       => 'LO'.time(),
-          'labelA'    => 'lokal kecamatan singkil',
-          'alamatA'   => $this->input->post('alamat'),
-          'createdAt' => $date,
-        );
-        $this->crud->save_alamat($_alamat);
-
+        $_alamatPid = 'LO'.time();
+        $_gampongPid = $this->input->post('gampong',TRUE);
       }elseif ($typeSet == 'luar') {
-
-        $_penduduk['alamatPid'] = 'LU'.time();
-        $_alamat = array(
-          'idA'       => 'L'.time(),
-          'labelA'    => 'lokal kecamatan singkil',
-          'alamatA'   => $this->input->post('alamat'),
-          'createdAt' => $date,
-        );
-        $this->crud->save_alamat($_alamat);
-
-        $_gampong = array(
-          'idG' => time(),
-          'namaG' => $this->input->post('gampong'),
-          'createdAt' => $date,
-          'status' => 1,
-          'isLokal' => 1,
-        );
-        $_penduduk['gampongPid'] = $this->input->post('count') + 1;
-        $this->crud->save_gampong($_gampong);
-
+        $_alamatPid = 'LU'.time();
+        $_gampongPid = $this->input->post('last') + 1;
       }else {
-        redirect(base_url('penduduk/_tambah/').$typeSet);
+        $this->penduduk_reg($typeSet);
       }
 
       $_penduduk = array(
         'isUsr'         => 0,
+        'alamatPid'     => $_alamatPid,
+        'gampongPid'    => $_gampongPid,
         'namaP'         => $this->input->post('nama_lengkap',TRUE),
         'nikP'          => $this->input->post('nik',TRUE),
         'jenisKelaminP' => $this->input->post('jenisKelamin',TRUE),
@@ -96,23 +81,70 @@ class Administration extends CI_Controller{
         'createdAt'     => $date,
       );
 
-      $this->crud->save_penduduk($_penduduk);
+      $stepFirst = $this->crud->save_penduduk($_penduduk);
+
+      if ($stepFirst != null) {
+        if ($typeSet == 'lokal') {
+          $_alamat = array(
+            'idA'       => $_alamatPid,
+            'labelA'    => 'lokal kecamatan singkil',
+            'alamatA'   => $this->input->post('alamat'),
+            'createdAt' => $date,
+          );
+          $this->crud->save_alamat($_alamat);
+
+        }elseif ($typeSet == 'luar') {
+          $_alamat = array(
+            'idA'       => $_alamatPid,
+            'labelA'    => 'luar kecamatan singkil',
+            'alamatA'   => $this->input->post('alamat'),
+            'createdAt' => $date,
+          );
+          $this->crud->save_alamat($_alamat);
+
+          $_gampong = array(
+            'idG' => $_gampongPid,
+            'namaG' => $this->input->post('gampong'),
+            'createdAt' => $date,
+            'statusG' => 1,
+            'isLokal' => 1,
+          );
+
+          $this->crud->save_gampong($_gampong);
+        }
+      }
+
+      $this->session->set_flashdata('msg', 'Sukses !');
+      redirect('penduduk/_tambah');
 
     }
 
 
   }
 
-  function penduduk_reg_select()
+  function penduduk_reg_select($set)
   {
     $data = array(
-      'title' => 'Tambah Penduduk',
-      'opt'   => 'form',
-      'page'  => 'page/penduduk/add_penduduk',
-      'db'    => ''
+      'title'   => 'Data Penduduk',
+      'opt'     => 'table',
+      'page'    => 'page/penduduk/data_penduduk',
     );
 
-    $this->load->view('main', $data);
+    if ($set == 'lokal') {
+      $data['db']       = $this->crud->get_penduduk_lokal()->result();
+      $data['part']     = $set;
+      $data['title2']   = 'Lokal Kecamatan Singkil';
+      $this->load->view('main', $data);
+
+    }elseif ($set == 'luar') {
+      $data['db']       = $this->crud->get_penduduk_luar()->result();
+      $data['part']     = $set;
+      $data['title2']   = 'Luar Kecamatan Singkil';
+      $this->load->view('main', $data);
+
+    }else {
+      redirect('/404');
+    }
   }
 
   function penduduk_det()
@@ -137,6 +169,15 @@ class Administration extends CI_Controller{
     // code...
   }
 
+  function dDesa_select()
+  {
+    $data = array(
+      'title' => 'Dana Desa',
+      'opt'   => 'form',
+      'page'  => 'page/dana_desa/data_dana_desa',
+    );
+    $this->load->view('main', $data);
+  }
 
   public function _rules_penduduk()
   {

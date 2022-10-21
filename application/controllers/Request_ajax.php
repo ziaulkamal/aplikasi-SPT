@@ -16,4 +16,9 @@ class Request_ajax extends CI_Controller{
     echo $get_gampong;
   }
 
+  function get_penduduk_all()
+  {
+    $get_penduduk = json_encode($this->call->get_penduduk_lokal()->result());
+    echo $get_penduduk;
+  }
 }
