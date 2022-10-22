@@ -4,20 +4,31 @@
       <div class="col-xl-7"><img class="bg-img-cover" src="<?= base_url('assets_sys/') ?>images/login/3.jpg" alt="looginpage"></div>
       <div class="col-xl-5 p-0">
         <div class="login-card">
-          <form class="theme-form login-form">
+          <form class="theme-form login-form" action="<?= base_url('process/login') ?>" method="POST" enctype="application/x-www-form-urlencoded">
             <h4>Login</h4>
             <h6><?= $title ?></h6>
+            <?php
+            echo validation_errors('<div class="alert alert-danger dark alert-dismissible fade show" role="alert">','</div>');
+            if ($this->session->flashdata('msg'))
+            {?> <div class="alert alert-success outline alert-dismissible fade show" role="alert"> <p><?= $this->session->flashdata('msg') ?></p> </div> <?php }
+            if ($this->session->flashdata('wrong')) {?>
+            <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><?= $this->session->flashdata('wrong'); ?></div>
+            <?php }
+            if ($this->session->flashdata('nologin')) { ?>
+              <div class="alert alert-danger dark alert-dismissible fade show" role="alert"><?= $this->session->flashdata('nologin'); ?></div>
+            <?php }
+             ?>
             <div class="form-group">
               <label>Email Address</label>
               <div class="input-group"><span class="input-group-text"><i class="icon-email"></i></span>
-                <input class="form-control" type="email" required="" placeholder="Test@gmail.com">
+                <input class="form-control" type="email" name="email">
               </div>
             </div>
             <div class="form-group">
               <label>Password</label>
               <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>
-                <input class="form-control" type="password" name="login[password]" required="" placeholder="*********">
-                <div class="show-hide"><span class="show"></span></div>
+                <input class="form-control" type="password" name="password">
+
               </div>
             </div>
             <!-- <div class="form-group">

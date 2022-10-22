@@ -55,7 +55,7 @@
             <div class="nav-right col pull-right right-menu p-0">
               <ul class="nav-menus">
                 <li class="onhover-dropdown p-0">
-                  <button class="btn btn-primary-light" type="button"><a href="login_two.html"><i data-feather="log-out"></i>Log out</a></button>
+                  <button class="btn btn-primary-light" onclick="exit()" type="button"><i data-feather="log-out"></i>Log out</button>
                 </li>
               </ul>
             </div>
@@ -63,12 +63,17 @@
           </div>
         </div>
         <div class="page-body-wrapper horizontal-menu">
+          <?php if ($this->session->userdata('userLogin') == FALSE || $this->session->userdata('complete') == FALSE) {
+            // code...
+          }else { ?>
           <header class="main-nav">
             <div class="sidebar-user text-center"><img class="img-90 rounded-circle" src="<?= base_url('assets_sys/') ?>images/dashboard/1.png" alt="">
               <div class="badge-bottom"><span class="badge badge-primary">New</span></div><a href="user-profile.html">
-                <h6 class="mt-3 f-14 f-w-600">Ziaul Kamal</h6></a>
-                <p class="mb-0 font-roboto">Backend Developer</p>
+                <h6 class="mt-3 f-14 f-w-600"><?= $this->session->userdata('nama') ?></h6></a>
+                <p class="mb-0 font-roboto">Operator <?= ucwords($this->session->userdata('operator')) ?></p>
               </div>
               <?php $this->load->view('template/sidebar'); ?>
             </header>
-    <?php } ?>
+
+        <?php }
+       } ?>

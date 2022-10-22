@@ -179,15 +179,131 @@ class Administration extends CI_Controller{
     $this->load->view('main', $data);
   }
 
+  function dDesa_reg($set)
+  {
+    $db = array(
+      'gampong' => $this->crud->get_complete_gampong()->result(),
+      'penduduk' => $this->crud->get_complete_gampong()->result(),
+    );
+    switch ($set) {
+      case 'fi':
+        $title = 'Buat Surat Fakta Integritas';
+        break;
+      case 'sp':
+        $title = 'Buat Surat Pengantar';
+        break;
+      case 'spp':
+        $title = 'Buat Surat Permohonan Pencairan';
+        break;
+      case 'sptj':
+        $title = 'Buat Surat Pertanggung Jawaban';
+        break;
+      case 'spv':
+        $title = 'Buat Surat Pernyataan Verifikasi';
+        break;
+      default:
+        redirect('404');
+        break;
+    }
+    $data = array(
+      'title' => $title,
+      'opt'   => 'form',
+      'set'   => $set,
+      'page'  => 'page/dana_desa/add_form',
+    );
+    $this->load->view('main', $data);
+  }
+
+  function lengkapi_profil($params)
+  {
+    $this->isLogin();
+    $check = $this->session->userdata('email');
+    if ($params != sha1($check)) {
+      $this->log_out();
+      redirect('404');
+    }else{
+      $data = array(
+        'title' => 'Lengkapi Data Terlebih Dahulu',
+        'opt'   => 'form',
+        'dbG'    => $this->crud->get_gampong_all_lokal()->result(),
+        'dbJ'    => $this->crud->get_jabatan_all()->result(),
+        'page'  => 'page/admin/complete_registration',
+      );
+      $this->load->view('main', $data);
+    }
+  }
+
+  function update_profil()
+  {
+    $date = date('Y-m-d');
+    $check = $this->session->userdata('email');
+    $this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required', array('required' => '%s harus di pilih'));
+    $this->_rules_penduduk();
+    if ($this->form_validation->run() == FALSE) {
+      $this->lengkapi_profil(sha1($check));
+    }else {
+
+      $_alamat = array(
+        'idA'           => 'LO'.time(),
+        'labelA'        => 'lokal kecamatan singkil',
+        'alamatA'       => $this->input->post('alamat', TRUE),
+        'createdAt'     => $date,
+      );
+
+      $_penduduk = array(
+        'isUsr'         => 1,
+        'alamatPid'     => $_alamat['idA'],
+        'gampongPid'    => $this->input->post('gampong', TRUE),
+        'namaP'         => $this->input->post('nama_lengkap',TRUE),
+        'nikP'          => $this->input->post('nik',TRUE),
+        'jenisKelaminP' => $this->input->post('jenisKelamin',TRUE),
+        'jabatanPid'    => $this->input->post('jabatan', TRUE),
+        'nomorHpP'      => $this->input->post('hp',TRUE),
+        'createdAt'     => $date,
+      );
+
+      $setLogin['pendudukUid'] = $_penduduk['nikP'];
+      $id = $this->session->userdata('id');
+      // echo $setLogin['pendudukUid'];
+
+      $this->crud->update_login($id,$setLogin);
+      $this->crud->save_penduduk($_penduduk);
+      $this->crud->save_alamat($_alamat);
+      $this->session->set_flashdata('wellcome', 'Akun anda berhasil di update !');
+      redirect('main');
+    }
+  }
+
   public function _rules_penduduk()
   {
     $this->form_validation->set_rules('nama_lengkap', 'Nama Lengkap', 'trim|required|min_length[5]|max_length[50]', array( 'required' => 'Anda harus mengisi bagian %s', ));
+    $this->form_validation->set_rules('hp', 'Nomor Hp', 'trim|required|min_length[11]|max_length[16]', array( 'required' => 'Anda harus mengisi bagian %s', 'min_length' => 'Bagian %s minimal 11 karakter', 'max_length' => 'Bagian %s maximal 16 karakter' ));
     $this->form_validation->set_rules('nik', 'Nomor Induk Kependudukan', 'trim|required|min_length[16]|max_length[16]|is_unique[_penduduk.nikP]', array( 'required' => 'Anda harus mengisi bagian %s', 'is_unique' => '%s sudah terdata, harap pastikan data nik yang diisi tidak boleh duplikasi', ));
     $this->form_validation->set_rules('jenisKelamin', 'Jenis Kelamin', 'trim|required', array( 'required' => 'Anda harus mengisi bagian %s', ));
     $this->form_validation->set_rules('gampong', 'Kelurahan / Gampong', 'trim|required|min_length[1]', array( 'required' => 'Anda harus mengisi bagian %s', 'min_length' => 'Harap memilih %s' ));
     $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required', array( 'required' => 'Anda harus mengisi bagian %s', ));
 
     return;
+  }
+
+  function isLogin()
+  {
+    if ($this->session->userdata('userLogin') == FALSE ) {
+      // $this->clear_cache();
+      $this->session->sess_destroy();
+      $this->session->set_flashdata('nologin', 'Anda harus login terlebih dahulu agar bisa mengakses aplikasi ini !');
+      redirect(base_url('sign_in'));
+    }
+  }
+
+  function log_out()
+  {
+    $id = $this->session->userdata('id');
+    $setLogin['isLogin'] = 0;
+    $this->crud->update_login($id, $setLogin);
+    $this->session->sess_destroy();
+    $this->session->set_flashdata('msg', 'Anda telah keluar dari aplikasi !');
+    // redirect(base_url('sign_in'));
   }
 
 }

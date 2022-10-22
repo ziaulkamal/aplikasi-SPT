@@ -58,6 +58,20 @@ $route['default_controller'] = 'Main';
 // Setting
 $route['sign_in'] = 'Setting/index';
 $route['sign_up'] = 'Setting/sign_up';
+$route['process/sign_up'] = 'Setting/proses_sign_up';
+$route['process/login'] = 'Setting/proses_login';
+$route['log_out'] = 'Setting/log_out';
+
+// Admin page
+$route['admin/user/(:any)'] = 'Setting/data_user/$1';
+$route['aktivasi/user/(:any)'] = 'Setting/aktivasi_user/$1';
+$route['reject/user/(:any)'] = 'Setting/reject_user/$1';
+$route['complete/register/(:any)'] = 'Administration/lengkapi_profil/$1';
+$route['complete/success'] = 'Administration/update_profil';
+$route['jabatan/_tambah'] = 'Setting/jabatan_set/';
+$route['jabatan/_process'] = 'Setting/proses_jabatan/';
+
+
 
 // penduduk
 $route['penduduk'] = 'Administration/penduduk_list';
@@ -71,6 +85,7 @@ $route['penduduk/_hapus/(:any)'] = 'Administration/penduduk_del/$1';
 
 // Dana Desa
 $route['dana_desa/_tambah'] = 'Administration/dDesa_select';
+$route['dana_desa/_tambah/(:any)'] = 'Administration/dDesa_reg/$1';
 
 $route['gga'] = 'Request_ajax/get_gampong_all';
 $route['gpa'] = 'Request_ajax/get_penduduk_all';
