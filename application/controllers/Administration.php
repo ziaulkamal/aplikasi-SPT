@@ -8,7 +8,12 @@ class Administration extends CI_Controller{
     parent::__construct();
     $this->load->model('M_crud','crud');
     $this->load->library('form_validation');
-    //Codeigniter : Write Less Do More
+    if ($this->session->userdata('userLogin') == FALSE || $this->session->userdata('level') > 3) {
+      // $this->clear_cache();
+      $this->session->sess_destroy();
+      $this->session->set_flashdata('nologin', 'Anda harus login terlebih dahulu agar bisa mengakses aplikasi ini !');
+      redirect(base_url('sign_in'));
+    }
   }
 
 
@@ -41,7 +46,6 @@ class Administration extends CI_Controller{
 
   function penduduk_select()
   {
-
     $data = array(
       'title' => 'Tambah Penduduk',
       'opt'   => 'form',

@@ -61,6 +61,9 @@ $route['sign_up'] = 'Setting/sign_up';
 $route['process/sign_up'] = 'Setting/proses_sign_up';
 $route['process/login'] = 'Setting/proses_login';
 $route['log_out'] = 'Setting/log_out';
+$route['resetPassword/(:any)'] = 'Setting/reset_password/$1';
+$route['ressPass/(:any)'] = 'Setting/reset_process/$1';
+$route['ressLogin'] = 'Setting/login_after_reset';
 
 // Admin page
 $route['admin/user/(:any)'] = 'Setting/data_user/$1';
@@ -70,6 +73,8 @@ $route['complete/register/(:any)'] = 'Administration/lengkapi_profil/$1';
 $route['complete/success'] = 'Administration/update_profil';
 $route['jabatan/_tambah'] = 'Setting/jabatan_set/';
 $route['jabatan/_process'] = 'Setting/proses_jabatan/';
+$route['admin/level'] = 'Setting/set_admin';
+$route['admin/_process/(:any)'] = 'Setting/proses_set_admin/$1';
 
 
 

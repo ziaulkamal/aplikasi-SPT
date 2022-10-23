@@ -70,7 +70,7 @@
             <div class="sidebar-user text-center"><img class="img-90 rounded-circle" src="<?= base_url('assets_sys/') ?>images/dashboard/1.png" alt="">
               <div class="badge-bottom"><span class="badge badge-primary">New</span></div><a href="user-profile.html">
                 <h6 class="mt-3 f-14 f-w-600"><?= $this->session->userdata('nama') ?></h6></a>
-                <p class="mb-0 font-roboto">Operator <?= ucwords($this->session->userdata('operator')) ?></p>
+                <p class="mb-0 font-roboto"><?php if ($this->session->userdata('level') == 1) { echo ucwords($this->session->userdata('operator')); }else { echo "Operator" . ucwords($this->session->userdata('operator')); }?></p>
               </div>
               <?php $this->load->view('template/sidebar'); ?>
             </header>

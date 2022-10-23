@@ -29,7 +29,7 @@
 
                 </div>
               <?php } ?>
-                <?php if ($this->session->userdata('userLogin') == TRUE && $this->session->userdata('level') == '3') {?>
+                <?php if ($this->session->userdata('userLogin') == TRUE && $this->session->userdata('level') == '2') {?>
                 <div class="row">
                   <div class="col-sm-6 col-xl-3 col-lg-6">
                     <div class="card o-hidden border-0">

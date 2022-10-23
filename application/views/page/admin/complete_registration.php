@@ -57,8 +57,8 @@
                     <label for="f1-first-name">Jenis Kelamin</label>
                     <select class="js-example-disabled-results col-sm-12" name="jenisKelamin" type="text">
                       <option value="" selected>-- Pilih --</option>
-                      <option value="L">Laki-laki</option>
-                      <option value="P">Perempuan</option>
+                      <option value="1">Laki-laki</option>
+                      <option value="2">Perempuan</option>
 
                     </select>
                   </div>

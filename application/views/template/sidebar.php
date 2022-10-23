@@ -41,8 +41,9 @@
           <li class="sidebar-main-title"> <div> <h6>Extra</h6> </div> </li>
           <li class="dropdown"><a class="nav-link menu-title <?php if ($this->uri->segment(1) == 'admin') { echo 'active'; } ?>" href="javascript:void(0)"><i data-feather="layout"></i><span>Pengaturan</span></a>
             <ul class="nav-submenu menu-content">
-              <li><a href="<?= base_url('admin/user/pending') ?>">Permintaan Akun Yang Mendaftar</a></li>
-              <li><a href="#">Atur Penggunaan Akun</a></li>
+              <li><a href="<?= base_url('admin/user/pending') ?>">Akun Pending</a></li>
+              <li><a href="<?= base_url('admin/user/aktif') ?>">Akun Terdaftar</a></li>
+              <li><a href="<?= base_url('admin/level') ?>">Atur Penggunaan Akun</a></li>
               <!-- <li><a href="#">Verifikasi Dokumen</a></li> -->
               <li><a href="<?= base_url('jabatan/_tambah') ?>">Tambah Jabatan</a></li>
             </ul>

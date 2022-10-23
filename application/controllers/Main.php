@@ -6,7 +6,12 @@ class Main extends CI_Controller{
   public function __construct()
   {
     parent::__construct();
-    //Codeigniter : Write Less Do More
+    if ($this->session->userdata('userLogin') == FALSE ) {
+      // $this->clear_cache();
+      $this->session->sess_destroy();
+      $this->session->set_flashdata('nologin', 'Anda harus login terlebih dahulu agar bisa mengakses aplikasi ini !');
+      redirect(base_url('sign_in'));
+    }
   }
 
   function index()

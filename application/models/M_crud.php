@@ -79,10 +79,20 @@ class M_crud extends CI_Model{
   function get_user_login($email, $pass)
   {
     $this->db->select('*');
+    // $this->db->join('_penduduk', '_penduduk.nikP = _user.pendudukUid');
+    $this->db->where('email', $email);
+    $this->db->where('passwd', $pass);
+    $query = $this->db->get('_user');
+    return $query;
+  }
+
+  function get_complete_login($email, $pass)
+  {
+    $this->db->select('*');
     $this->db->join('_penduduk', '_penduduk.nikP = _user.pendudukUid');
     $this->db->where('email', $email);
     $this->db->where('passwd', $pass);
-    $query = $this->db->get('_user', 1, 0);
+    $query = $this->db->get('_user');
     return $query;
   }
 
@@ -100,7 +110,18 @@ class M_crud extends CI_Model{
     $this->db->select('*');
     $this->db->where('statusL', 0);
     $query = $this->db->get('_log_sign_up');
+    return $query;
+  }
 
+  function get_user_all_active()
+  {
+    $this->db->select('*');
+    $this->db->join('_penduduk', '_penduduk.nikP = _user.pendudukUid');
+    $this->db->join('_jabatan', '_jabatan.idJ = _penduduk.jabatanPid');
+    $this->db->join('_gampong', '_gampong.idG = _penduduk.gampongPid');
+    $this->db->join('_alamat', '_alamat.idA = _penduduk.alamatPid');
+    $this->db->where('status', 1);
+    $query = $this->db->get('_user');
     return $query;
   }
 
@@ -146,5 +167,76 @@ class M_crud extends CI_Model{
     $this->db->where('statusJ', 1);
     $query = $this->db->get('_jabatan');
     return $query;
+  }
+
+  function get_is_user()
+  {
+    $this->db->select('*');
+    $this->db->join('_user', '_user.pendudukUid = _penduduk.nikP');
+    $this->db->join('_jabatan', '_jabatan.idJ = _penduduk.jabatanPid');
+    $this->db->where('isUsr', 1);
+    $query = $this->db->get('_penduduk');
+    return $query;
+  }
+
+  function get_detail_user($id)
+  {
+    $this->db->select('*');
+    $this->db->join('_user', '_user.pendudukUid = _penduduk.nikP');
+    $this->db->join('_jabatan', '_jabatan.idJ = _penduduk.jabatanPid');
+    $this->db->where('idU', $id);
+    $query = $this->db->get('_penduduk');
+    return $query;
+  }
+
+  function update_set_admin($id, $data)
+  {
+    $this->db->where('idU', $id);
+    return $this->db->update('_user', $data);
+  }
+
+  function update_penduduk_admin($idP,$_penduduk)
+  {
+    $this->db->where('idP', $idP);
+    return $this->db->update('_penduduk', $_penduduk);
+  }
+
+  function delete_alamat($alamat_id)
+  {
+    $this->db->where('idA', $alamat_id);
+    return $this->db->delete('_alamat');
+  }
+
+  function save_reset_password($data)
+  {
+    return $this->db->insert('_reset_request', $data);
+  }
+
+  function get_reset($email)
+  {
+    $this->db->select('*');
+    $this->db->where('emailReset', $email);
+    $query = $this->db->get('_reset_request',1);
+    return $query;
+  }
+
+  function action_token($token)
+  {
+    $this->db->select('*');
+    $this->db->where('tokenReset', $token);
+    $query = $this->db->get('_reset_request');
+    return $query;
+  }
+
+  function delete_token($token)
+  {
+    $this->db->where('tokenReset', $token);
+    return $this->db->delete('_reset_request');
+  }
+
+  function update_password($email, $data)
+  {
+    $this->db->where('email', $email);
+    return $this->db->update('_user', $data);
   }
 }
