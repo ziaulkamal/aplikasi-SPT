@@ -28,27 +28,28 @@
                   <tbody>
                     <?php
                     $numlo = 1;
-                    foreach ($db as $setAccounts) { ?>
-                      <tr>
-                        <td><?= $numlo++ ?></td>
-                        <td><?= ucwords($setAccounts->namaP); ?></td>
-                        <td><?= $setAccounts->email; ?></td>
-                        <td><?= $setAccounts->lvl; ?></td>
-                        <td><?= $setAccounts->label; ?></td>
-                        <td><?php if ($setAccounts->isLogin == 1) {
-                          echo "Ya";
-                        }else {
-                          echo "Tidak";
-                        } ?></td>
-                        <td>
-                          <div class="btn-group" role="group" aria-label="Basic example">
-                          <a class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#setAccounts<?= $setAccounts->idU ?>">Update Level</a>
-                        </div>
-                      </td>
+                    foreach ($db as $setAccounts) {
+                      if ($setAccounts->lvl != 1) {?>
+                        <tr>
+                          <td><?= $numlo++ ?></td>
+                          <td><?= ucwords($setAccounts->namaP); ?></td>
+                          <td><?= $setAccounts->email; ?></td>
+                          <td><?= $setAccounts->lvl; ?></td>
+                          <td><?= $setAccounts->label; ?></td>
+                          <td><?php if ($setAccounts->isLogin == 1) {
+                            echo "Ya";
+                          }else {
+                            echo "Tidak";
+                          } ?></td>
+                          <td>
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                            <a class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#setAccounts<?= $setAccounts->idU ?>">Update Level</a>
+                          </div>
+                          </td>
+                        </tr>
 
-
-                      </tr>
-                    <?php } ?>
+                      <?php }
+                     } ?>
 
                   </tbody>
 

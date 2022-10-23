@@ -29,22 +29,32 @@ class Setting extends CI_Controller{
 
   function index()
   {
-    $data = array(
-      'title' => 'Selamat Datang di Si-Batuah !',
-      'page' => 'sign_in',
-      'err' => 'sign_in'
-    );
-    $this->load->view('main', $data);
+    if ($this->session->userdata('userLogin') == FALSE) {
+      $data = array(
+        'title' => 'Selamat Datang di Si-Batuah !',
+        'page' => 'sign_in',
+        'err' => 'sign_in'
+      );
+      $this->load->view('main', $data);
+    }else {
+      redirect('main');
+    }
+
   }
 
   function sign_up()
   {
-    $data = array(
-      'title' => 'Daftar Akun Pengguna Baru di Si-Batuah !',
-      'page' => 'sign_up',
-      'err' => 'sign_up'
-    );
-    $this->load->view('main', $data);
+    if ($this->session->userdata('userLogin') == FALSE) {
+      $data = array(
+        'title' => 'Daftar Akun Pengguna Baru di Si-Batuah !',
+        'page' => 'sign_up',
+        'err' => 'sign_up'
+      );
+      $this->load->view('main', $data);
+    }else {
+      redirect('main');
+    }
+
   }
 
   function proses_sign_up()
