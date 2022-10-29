@@ -14,10 +14,10 @@
             <div class="div">
               <div class="card-body">
                 <div class="media-body m-5">
-                  <h6 class="f-w-600">Fakta Integritas (DDS)</h6>
+                  <h6 class="f-w-600">Fakta Integritas (ADK)</h6>
                   <p>nama, jabatan, nik, nomor hp, materai 10.000</p>
                 </div>
-                <a class="btn btn-primary btn-sm" href="<?= base_url('s/dds/_tambah/fi') ?>"><span class="fa fa-edit"></span> Mulai</a>
+                <a class="btn btn-primary btn-sm" href="<?= base_url('s/adk/_tambah/fi') ?>"><span class="fa fa-edit"></span> Mulai</a>
               </div>
             </div>
           </div>
@@ -27,10 +27,10 @@
             <div class="div">
               <div class="card-body">
                 <div class="media-body m-5">
-                  <h6 class="f-w-600">Surat Pengantar (DDS)</h6>
+                  <h6 class="f-w-600">Surat Pengantar (ADK)</h6>
                   <p>nomor surat, tahapan DDS, tahun</p>
                 </div>
-                <a class="btn btn-primary btn-sm" href="<?= base_url('s/dds/_tambah/sp') ?>"><span class="fa fa-edit"></span> Mulai</a>
+                <a class="btn btn-primary btn-sm" href="<?= base_url('s/adk/_tambah/sp') ?>"><span class="fa fa-edit"></span> Mulai</a>
               </div>
             </div>
           </div>
@@ -40,10 +40,10 @@
             <div class="div">
               <div class="card-body">
                 <div class="media-body m-5">
-                  <h6 class="f-w-600">Surat Permohonan Pencairan (DDS)</h6>
+                  <h6 class="f-w-600">Surat Permohonan Pencairan (ADK)</h6>
                   <p>nomor, tahapan, tahun anggaran</p>
                 </div>
-                <a class="btn btn-primary btn-sm" href="<?= base_url('s/dds/_tambah/spp') ?>"><span class="fa fa-edit"></span> Mulai</a>
+                <a class="btn btn-primary btn-sm" href="<?= base_url('s/adk/_tambah/spp') ?>"><span class="fa fa-edit"></span> Mulai</a>
               </div>
             </div>
           </div>
@@ -53,10 +53,10 @@
             <div class="div">
               <div class="card-body">
                 <div class="media-body m-5">
-                  <h6 class="f-w-600">Surat Pernyataan Tanggung Jawab (DDS)</h6>
+                  <h6 class="f-w-600">Surat Pernyataan Tanggung Jawab (ADK)</h6>
                   <p>nama, nik, jabatan, materai 10.000</p>
                 </div>
-                <a class="btn btn-primary btn-sm" href="<?= base_url('s/dds/_tambah/sptj') ?>"><span class="fa fa-edit"></span> Mulai</a>
+                <a class="btn btn-primary btn-sm" href="<?= base_url('s/adk/_tambah/sptj') ?>"><span class="fa fa-edit"></span> Mulai</a>
               </div>
             </div>
           </div>
@@ -66,10 +66,10 @@
             <div class="div">
               <div class="card-body">
                 <div class="media-body m-5">
-                  <h6 class="f-w-600">Surat Pernyataan Verifikasi (DDS)</h6>
+                  <h6 class="f-w-600">Surat Pernyataan Verifikasi (ADK)</h6>
                   <p>nama sekretaris kampung, nama kaur keuangan, tahapan dds, tahun</p>
                 </div>
-                <a class="btn btn-primary btn-sm" href="<?= base_url('s/dds/_tambah/spv') ?>"><span class="fa fa-edit"></span> Mulai</a>
+                <a class="btn btn-primary btn-sm" href="<?= base_url('s/adk/_tambah/spv') ?>"><span class="fa fa-edit"></span> Mulai</a>
               </div>
             </div>
           </div>

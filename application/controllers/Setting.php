@@ -135,15 +135,18 @@ class Setting extends CI_Controller{
             'email'     => $complete_login_data['email'],
             'level'     => $complete_login_data['lvl'],
             'stemp'     => sha1($complete_login_data['email']),
+            'idP'       => $complete_login_data['idP'],
             'complete'  => TRUE,
         );
         if ($complete_login_data['lvl'] == 3) {
           $session_start['operator'] = 'gampong';
-          $session_start['gampong'] = $data['gampongPid'];
+          $session_start['gampong'] = $complete_login_data['gampongPid'];
         }elseif ($complete_login_data['lvl'] == 2) {
           $session_start['operator'] = 'kecamatan';
+          $session_start['gampong'] = $complete_login_data['gampongPid'];
         }elseif ($complete_login_data['lvl'] == 1){
           $session_start['operator'] = 'super-admin';
+          $session_start['gampong'] = $complete_login_data['gampongPid'];
         }
         $this->session->set_userdata($session_start);
         $this->session->set_flashdata('wellcome', 'Selamat datang di Si-Batuah (Sistem Pelayanan Administrasi Berbasis Aplikasi Online Terukur dan Mudah).');

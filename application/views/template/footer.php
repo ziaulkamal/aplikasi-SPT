@@ -34,33 +34,46 @@
 <script src="<?= base_url('assets_sys/') ?>js/form-wizard/jquery.backstretch.min.js"></script>
 <script src="<?= base_url('assets_sys/') ?>js/select2/select2.full.min.js"></script>
 <script src="<?= base_url('assets_sys/') ?>js/select2/select2-custom.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+
 <script type="text/javascript">
-  function luarSelect() {
-    location.replace('<?= base_url('penduduk') ?>' + '/_tambah/' + 'luar');
-  }
 
-  function lokalSelect() {
-    location.replace('<?= base_url('penduduk') ?>' + '/_tambah/' + 'lokal');
-  }
+function onlyNumberKey(evt) {
 
-  function pendudukBack() {
-    location.replace('<?= base_url('penduduk') ?>' + '/_tambah');
-  }
+    // Only ASCII character in that range allowed
+    var ASCIICode = (evt.which) ? evt.which : evt.keyCode
+    if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+        return false;
+    return true;
+}
+<?php
 
-  function onlyNumberKey(evt) {
 
-      // Only ASCII character in that range allowed
-      var ASCIICode = (evt.which) ? evt.which : evt.keyCode
-      if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
-          return false;
-      return true;
-  }
+switch ($this->uri->segment(1)) {
+  case 'penduduk':
+      ?>
+      function luarSelect() {
+        location.replace('<?= base_url('penduduk') ?>' + '/_tambah/' + 'luar');
+      }
 
-  function danaDesa(page) {
-    if (page === 'fi') {
-      location.replace('<?= base_url('') ?>')
-    }
-  }
+      function lokalSelect() {
+        location.replace('<?= base_url('penduduk') ?>' + '/_tambah/' + 'lokal');
+      }
+
+      function pendudukBack() {
+        location.replace('<?= base_url('penduduk') ?>' + '/_tambah');
+      }
+      <?php
+    break;
+
+
+  default:
+    // code...
+    break;
+}
+?>
+
+
 
 </script>
 <?php } ?>
@@ -68,7 +81,22 @@
 function exit() {
   location.replace('<?= base_url('log_out') ?>');
 }
+<?php
+if ($this->uri->segment(1) == 'dana_desa') { ?>
+  function adk() {
+    location.replace('<?= base_url('dana_desa/adk') ?>');
+  }
+
+  function dds() {
+    location.replace('<?= base_url('dana_desa/dds') ?>');
+  }
+<?php } ?>
 </script>
+
+<?php if ($this->uri->segment(1) == 'upload_dokumen') {?>
+<script src="<?= base_url('assets_sys/') ?>js/dropzone/dropzone.js"></script>
+<script src="<?= base_url('assets_sys/') ?>js/dropzone/dropzone-script.js"></script>
+<?php } ?>
 <script src="<?= base_url('assets_sys/') ?>js/bootstrap/popper.min.js"></script>
 <script src="<?= base_url('assets_sys/') ?>js/bootstrap/bootstrap.min.js"></script>
 <script src="<?= base_url('assets_sys/') ?>js/tooltip-init.js"></script>

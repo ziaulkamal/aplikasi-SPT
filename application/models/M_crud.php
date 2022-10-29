@@ -239,4 +239,38 @@ class M_crud extends CI_Model{
     $this->db->where('email', $email);
     return $this->db->update('_user', $data);
   }
+
+  function autofill($nik)
+  {
+    $this->db->select('*');
+    $this->db->where('nikP', $nik);
+    $this->db->join('_gampong', '_gampong.idG = _penduduk.gampongPid');
+    $this->db->join('_jabatan', '_jabatan.idJ = _penduduk.jabatanPid');
+    $this->db->join('_alamat', '_alamat.idA = _penduduk.alamatPid');
+    $query = $this->db->get('_penduduk');
+    return $query;
+  }
+
+  function save_dds($data)
+  {
+    return $this->db->insert('_dana_desa', $data);
+  }
+
+  function save_adk($data)
+  {
+    return $this->db->insert('_alokasi_dana_desa', $data);
+  }
+
+  function get_user_dana_desa($gampond_id)
+  {
+    $this->db->join('_jabatan', '_jabatan.idJ = _dana_desa.jabatanDdid');
+    $this->db->join('_gampong', '_gampong.idG = _dana_desa.gampongDid');
+    // $this->db->join('_penduduk', '_penduduk.idP = _dana_desa.pendudukDdid');
+    $this->db->join('_penduduk', '_penduduk.jabatanPid = _jabatan.idJ');
+    $this->db->where('gampongDid', $gampond_id);
+    $this->db->order_by('createdAtDD', 'DESC');
+    $query = $this->db->get('_dana_desa');
+    return $query;
+
+  }
 }

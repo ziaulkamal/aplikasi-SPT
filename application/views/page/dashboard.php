@@ -1,5 +1,20 @@
+
+
+
+
+
+
         <div class="page-body">
           <div class="container-fluid">
+            <?php
+
+            echo "<pre>";
+            var_dump($this->session->userdata);
+            echo "</pre>";
+
+
+
+             ?>
             <div class="page-header">
               <?php if ($this->session->flashdata('wellcome')) { ?>
                 <div class="row">

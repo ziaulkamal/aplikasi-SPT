@@ -24,6 +24,9 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/flag-icon.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/feather-icon.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/bootstrap.css">
+    <?php if ($this->uri->segment(1) == 'upload_dokumen') {?>
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/dropzone.css">
+    <?php } ?>
     <?php if (isset($opt) && $opt == 'table') { ?>
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/datatable-extension.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/datatables.css">

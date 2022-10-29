@@ -21,4 +21,12 @@ class Request_ajax extends CI_Controller{
     $get_penduduk = json_encode($this->call->get_penduduk_lokal()->result());
     echo $get_penduduk;
   }
+
+  function jsonPenduduk($nik)
+  {
+    $data = $this->call->autofill($nik);
+    echo json_encode($data->row_array());
+
+  }
+
 }

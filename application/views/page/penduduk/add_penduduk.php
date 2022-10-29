@@ -141,7 +141,7 @@
             <div class="card-body btn-showcase">
                 <button class="btn btn-square btn-primary" type="button" onclick="lokalSelect()">Penduduk Lokal Kecamatan Singkil</button>
                 <button class="btn btn-square btn-secondary" type="button" onclick="luarSelect()">Penduduk Luar Kecamatan Singkil</button>
-              </div>
+            </div>
 
           <?php } ?>
         </div>
