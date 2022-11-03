@@ -44,6 +44,9 @@ $route['dana_desa/(:any)'] = 'Administration/dDesa_list/$1';
 $route['s/dana_desa'] = 'Administration/pilih_jenis/';
 // $route['dana_desa'] = 'Administration/dDesa_list';
 
+// Hapus surat
+$route['hapus_berkas_surat/(:any)/(:any)'] = 'Administration/del_surat/$1/$2';
+
 // ADK Route
 $route['s/dana_desa/_tambah/adk'] = 'Administration/adk_select';
 $route['s/adk/_tambah/(:any)'] = 'Administration/form_adk/$1';
@@ -57,7 +60,16 @@ $route['s/dds/_process/(:any)'] = 'Administration/proses_dds/$1';
 // Upload Verifikasi
 $route['upload_dokumen'] = 'Administration/upload_dokumen';
 $route['upload_dokumen/(:any)'] = 'Administration/step_upload_dokumen/$1';
+$route['proses_upload/(:any)'] = 'Administration/proses_upload_dokumen/$1';
 
+// Edit Upload
+$route['edit_upload_dokumen/(:any)/(:any)'] = 'Administration/step_edit_upload_dokumen/$1/$2';
+$route['prosesEdit_upload_dokumen/(:any)/(:any)'] = 'Administration/proses_edit_upload_dokumen/$1/$2';
+
+
+// Delete dokumen
+
+$route['dokumen/delete/(:any)'] = 'Administration/del_upload_dokumen/$1';
 $route['s/dana_desa/_tambah/dds'] = 'Administration/dds_select';
 $route['s/dana_desa/_tambah/(:any)'] = 'Administration/dDesa_reg/$1';
 $route['s/dana_desa/_process/(:any)'] = 'Administration/proses_dana_desa/$1';
@@ -67,7 +79,12 @@ $route['gpa'] = 'Request_ajax/get_penduduk_all';
 $route['json/(:any)'] = 'Request_ajax/jsonPenduduk/$1';
 // $route['json'] = 'Request_ajax/jsonPenduduk/';
 
+// Donwload Dokumen
+$route['download/(:any)/(:any)/(:any)'] = 'Download_dokumen/download/$1/$2/$3';
 
+
+$route['pengaturanGampong/(:any)'] = 'Administration/pengaturan_gampong/$1';
+$route['prosesGampongSetting/(:any)'] = 'Administration/prosesPengaturanGampong/$1';
 
 $route['404_override'] = 'Setting/error_404';
 $route['translate_uri_dashes'] = FALSE;

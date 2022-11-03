@@ -135,6 +135,7 @@ class Setting extends CI_Controller{
             'email'     => $complete_login_data['email'],
             'level'     => $complete_login_data['lvl'],
             'stemp'     => sha1($complete_login_data['email']),
+            'nik'       => $complete_login_data['nikP'],
             'idP'       => $complete_login_data['idP'],
             'complete'  => TRUE,
         );

@@ -16,7 +16,6 @@ class Administration extends CI_Controller{
     }
   }
 
-
   function penduduk_list()
   {
     $data = array(
@@ -396,17 +395,19 @@ class Administration extends CI_Controller{
       }else {
         $data = array(
           'jenisAdk'              => 'SPV',
-          'tahapanAdk'       => $this->input->post('tahapan_anggaran', TRUE),
-          'persentaseAdk'    => $this->input->post('persentase_anggaran', TRUE),
+          'tahapanAdk'            => $this->input->post('tahapan_anggaran', TRUE),
+          'persentaseAdk'         => $this->input->post('persentase_anggaran', TRUE),
           'pajakTahapanAdk'       => $this->input->post('tahapan_pajak', TRUE),
           'persentasePajakAdk'    => $this->input->post('persentase_pajak', TRUE),
-          'angkaAnggaranAdk'         => $this->input->post('nilai_pengajuan', TRUE),
+          'angkaAnggaranAdk'      => $this->input->post('nilai_pengajuan', TRUE),
           'angkaPajakAdk'         => $this->input->post('nilai_pajak', TRUE),
-          'tahunAdk'         => date('Y'),
-          'createdAtDk'      => $date,
-          'userAdkid'        => $this->session->userdata('id'),
-          'statusAdk'        => 0,
-          'gampongAdkid'     => $this->session->userdata('gampong')
+          'tahunAdk'              => date('Y'),
+          'createdAtDk'           => $date,
+          'pendudukAid'           => $this->input->post('id', TRUE),
+          'jabatanAid'            => $this->input->post('jabatan', TRUE),
+          'userAdkid'             => $this->session->userdata('id'),
+          'statusAdk'             => 0,
+          'gampongAdkid'          => $this->session->userdata('gampong')
         );
 
         $this->crud->save_adk($data);
@@ -438,7 +439,7 @@ class Administration extends CI_Controller{
         break;
 
       case 'sp':
-        $titles = "Pernyataan";
+        $titles = "Pengantar";
         break;
 
       case 'spp':
@@ -519,13 +520,15 @@ class Administration extends CI_Controller{
           'jabatanDdid'   => $this->input->post('jabatan', TRUE),
           'sumberDd'      => $this->input->post('anggaran', TRUE),
           'tahunDd'       => $this->input->post('tahun', TRUE),
-          'createdAt'     => $date,
+          'createdAtDD'     => $date,
           'userDdid'      => $this->session->userdata('id'),
           'statusDd'      => 0,
           'gampongDid'    => $this->session->userdata('gampong')
         );
 
-        // HACK: Target Simpan Ke Crud
+      $this->crud->save_dds($data);
+      $this->session->set_flashdata('msg', 'Berhasil Membuat Surat !');
+      redirect('s/dana_desa/_tambah/dds');
       }
 
 
@@ -546,13 +549,14 @@ class Administration extends CI_Controller{
           'jabatanDdid'   => $this->input->post('jabatan', TRUE),
           'sumberDd'      => $this->input->post('anggaran', TRUE),
           'tahunDd'       => $this->input->post('tahun', TRUE),
-          'createdAt'     => $date,
+          'createdAtDD'     => $date,
           'userDdid'      => $this->session->userdata('id'),
           'statusDd'      => 0,
           'gampongDid'    => $this->session->userdata('gampong')
         );
-
-        // HACK: Target Simpan Ke Crud
+          $this->crud->save_dds($data);
+          $this->session->set_flashdata('msg', 'Berhasil Membuat Surat !');
+          redirect('s/dana_desa/_tambah/dds');
       }
 
 
@@ -573,13 +577,15 @@ class Administration extends CI_Controller{
           'jabatanDdid'   => $this->input->post('jabatan', TRUE),
           'sumberDd'      => $this->input->post('anggaran', TRUE),
           'tahunDd'       => $this->input->post('tahun', TRUE),
-          'createdAt'     => $date,
+          'createdAtDD'     => $date,
           'userDdid'      => $this->session->userdata('id'),
           'statusDd'      => 0,
           'gampongDid'    => $this->session->userdata('gampong')
         );
 
-        // HACK: Target Simpan Ke Crud
+        $this->crud->save_dds($data);
+        $this->session->set_flashdata('msg', 'Berhasil Membuat Surat !');
+        redirect('s/dana_desa/_tambah/dds');
       }
 
 
@@ -592,6 +598,7 @@ class Administration extends CI_Controller{
       }else {
         $data = array(
           'jenisDd'          => 'SPTJ',
+          'nomorDd'          => $this->input->post('no', TRUE),
           'gelombangDd'      => $this->input->post('tahapan', TRUE),
           'persentase'       => $this->input->post('persentase', TRUE),
           'angkaAnggaran'    => $this->input->post('penggunaan_dana', TRUE),
@@ -599,13 +606,15 @@ class Administration extends CI_Controller{
           'jabatanDdid'      => $this->input->post('jabatan', TRUE),
           'sumberDd'         => $this->input->post('anggaran', TRUE),
           'tahunDd'          => $this->input->post('tahun', TRUE),
-          'createdAt'        => $date,
+          'createdAtDD'        => $date,
           'userDdid'         => $this->session->userdata('id'),
           'statusDd'         => 0,
           'gampongDid'       => $this->session->userdata('gampong')
         );
 
-        // HACK: Target Simpan Ke Crud
+        $this->crud->save_dds($data);
+        $this->session->set_flashdata('msg', 'Berhasil Membuat Surat !');
+        redirect('s/dana_desa/_tambah/dds');
       }
 
 
@@ -618,6 +627,8 @@ class Administration extends CI_Controller{
       }else {
         $data = array(
           'jenisDd'              => 'SPV',
+
+          'jabatanDdid'          => $this->input->post('jabatan', TRUE),
           'tahapanDdsSebelumnya' => $this->input->post('tahapan_sebelumnya', TRUE),
           'persentaseSebelumnya' => $this->input->post('persentase_sebelumnya', TRUE),
           'tahunSebelumnya'      => $this->input->post('tahun_sebelumnya', TRUE),
@@ -625,13 +636,15 @@ class Administration extends CI_Controller{
           'persentase'           => $this->input->post('persentase', TRUE),
           'pendudukDdid'         => $this->input->post('id', TRUE),
           'tahunDd'              => $this->input->post('tahun', TRUE),
-          'createdAt'            => $date,
+          'createdAtDD'          => $date,
           'userDdid'             => $this->session->userdata('id'),
           'statusDd'             => 0,
           'gampongDid'           => $this->session->userdata('gampong')
         );
 
-        // HACK: Target Simpan Ke Crud
+        $this->crud->save_dds($data);
+        $this->session->set_flashdata('msg', 'Berhasil Membuat Surat !');
+        redirect('s/dana_desa/_tambah/dds');
       }
 
 
@@ -821,13 +834,26 @@ class Administration extends CI_Controller{
 
   function upload_dokumen()
   {
-    $this->session->set_flashdata('msg','Untuk menggunakan fitur ini, pastikan dokumen kebutuhan untuk verifikasi sudah di persiapkan !');
-    $data = array(
-      'title'     => 'Upload Dokumen',
-      'opt'       => 'form',
-      'page'      => 'page/upload/select_fitur',
-    );
-    $this->load->view('main', $data);
+    $id           = $this->session->userdata('gampong');
+    $data_gampong = $this->crud->get_gampong_single($id)->row();
+
+    if (empty($data_gampong->idGeuchikG) && empty($data_gampong->idJGG)	&& empty($data_gampong->idKaurG) && empty($data_gampong->idJKG) && empty($data_gampong->idSekretarisG) && empty($data_gampong->idJSG)) {
+      $this->session->set_flashdata('msg', 'Kamu harus melengkapi data ini terlebih dahulu');
+      redirect('pengaturanGampong/'.$id);
+    }else {
+      $db           = $this->crud->get_upload_file()->result();
+      $check        = $this->crud->get_upload_file()->num_rows();
+      // $this->session->set_flashdata('msg','Untuk menggunakan fitur ini, pastikan dokumen kebutuhan untuk verifikasi sudah di persiapkan !');
+      $data = array(
+        'title'     => 'Upload Dokumen',
+        'opt'       => 'table',
+        'page'      => 'page/upload/select_fitur',
+        'db'        => $db,
+        'check'     => $check,
+      );
+      $this->load->view('main', $data);
+    }
+
   }
 
   function step_upload_dokumen($page)
@@ -850,13 +876,509 @@ class Administration extends CI_Controller{
     $this->load->view('main', $data);
   }
 
+  function step_edit_upload_dokumen($page,$id)
+  {
+
+    $db = $this->crud->get_upload_single($id);
+    if ($page == 'adk') {
+      $data = array(
+        'title'     => 'Update Upload Dokumen',
+        'opt'       => 'form',
+        'page'      => 'page/upload/adk/edit_upload',
+        'db'        => $db->row(),
+      );
+    }elseif ($page == 'dds') {
+      $data = array(
+        'title'     => 'Update Upload Dokumen',
+        'opt'       => 'form',
+        'page'      => 'page/upload/dds/edit_upload',
+        'db'        => $db->row(),
+      );
+    }else {
+      redirect('404');
+    }
+    $this->load->view('main', $data);
+  }
+
+  function proses_edit_upload_dokumen($page,$id)
+  {
+    $db = $this->crud->get_upload_single($id)->row();
+    $check = $this->crud->get_upload_single($id)->num_rows();
+    if ($check > 0) {
+      switch ($page) {
+        case 'adk':
+          $config = array(
+            'allowed_types' => 'jpg|png|pdf|jpeg|docx|doc|odt',
+            'max_size'      => 10000,
+            'overwrite'     => TRUE,
+            'upload_path'   => './assets_sys/files/adk/'.$db->path_file,
+            'encrypt_name'  => TRUE,
+          );
+          $this->load->library('upload', $config);
+
+          if (!empty($_FILES['f1']['name'])) {
+            if ($this->upload->do_upload('f1')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF1']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f2']['name'])) {
+            if ($this->upload->do_upload('f2')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF2']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f3']['name'])) {
+            if ($this->upload->do_upload('f3')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF3']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f4']['name'])) {
+            if ($this->upload->do_upload('f4')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF4']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f5']['name'])) {
+            if ($this->upload->do_upload('f5')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF5']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f6']['name'])) {
+            if ($this->upload->do_upload('f6')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF6']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f7']['name'])) {
+            if ($this->upload->do_upload('f7')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF7']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f8']['name'])) {
+            if ($this->upload->do_upload('f8')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF8']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f9']['name'])) {
+            if ($this->upload->do_upload('f9')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF9']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f10']['name'])) {
+            if ($this->upload->do_upload('f10')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF10']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f11']['name'])) {
+            if ($this->upload->do_upload('f11')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF11']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f12']['name'])) {
+            if ($this->upload->do_upload('f12')) {
+              $namaFile11 = 'ADK_' . md5($date.'F12-ADK');
+              $data_file = $this->upload->data();
+            }
+            $data['udAdkF12']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+          }
+
+          if (!empty($_FILES['f13']['name'])) {
+            if ($this->upload->do_upload('f13')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF13']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f14']['name'])) {
+            if ($this->upload->do_upload('f14')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF14']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          $this->crud->update_upload($id,$data);
+          $this->session->set_flashdata('msg', 'Berhasil Menambah File Upload Dokumen');
+          redirect('upload_dokumen');
+          break;
+
+        case 'dds':
+          $config = array(
+            'allowed_types' => 'jpg|png|pdf|jpeg|docx|doc|odt',
+            'max_size'      => 10000,
+            'overwrite'     => TRUE,
+            'upload_path'   => './assets_sys/files/dds/'.$db->path_file,
+            'encrypt_name'  => TRUE,
+          );
+          $this->load->library('upload', $config);
+
+          if (!empty($_FILES['f1']['name'])) {
+            if ($this->upload->do_upload('f1')) {
+              $data_file = $this->upload->data();
+              $data['udDdsF1']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f2']['name'])) {
+            if ($this->upload->do_upload('f2')) {
+              $data_file = $this->upload->data();
+              $data['udDdsF2']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f3']['name'])) {
+            if ($this->upload->do_upload('f3')) {
+              $data_file = $this->upload->data();
+              $data['udDdsF3']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f4']['name'])) {
+            if ($this->upload->do_upload('f4')) {
+              $data_file = $this->upload->data();
+              $data['udDdsF4']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f5']['name'])) {
+            if ($this->upload->do_upload('f5')) {
+              $data_file = $this->upload->data();
+              $data['udDdsF5']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f6']['name'])) {
+            if ($this->upload->do_upload('f6')) {
+              $data_file = $this->upload->data();
+              $data['udDdsF6']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f7']['name'])) {
+            if ($this->upload->do_upload('f7')) {
+              $data_file = $this->upload->data();
+              $data['udDdsF7']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f8']['name'])) {
+            if ($this->upload->do_upload('f8')) {
+              $data_file = $this->upload->data();
+              $data['udDdsF8']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f9']['name'])) {
+            if ($this->upload->do_upload('f9')) {
+              $data_file = $this->upload->data();
+              $data['udDdsF9']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f10']['name'])) {
+            if ($this->upload->do_upload('f10')) {
+              $data_file = $this->upload->data();
+              $data['udDdsF10']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+          break;
+      }
+
+    }else {
+      redirect('404');
+    }
+  }
+
+  function del_upload_dokumen($id)
+  {
+    $data = $this->crud->get_upload_single($id)->row();
+    $pathLocal = FCPATH;
+    $linkFile = $pathLocal.'assets_sys/files/adk/'.$data->path_file;
+    chmod($linkFile, 0777);
+    exec ("find ".$linkFile." -type f -exec chmod 0777 {} +");
+    system("rm -rf ".$linkFile.'/*');
+    rmdir($linkFile);
+    $this->crud->upload_delete($id);
+    $this->session->set_flashdata('msg', 'Berhasil hapus data !');
+    redirect('upload_dokumen');
+  }
+
+  function proses_upload_dokumen($page)
+  {
+    $date = date('Y-m-d');
+    $pathToFile = time();
+
+    switch ($page) {
+      case 'adk':
+
+        $this->_rules_upload($page);
+        if ($this->form_validation->run() == FALSE) {
+          $this->step_upload_dokumen($page);
+        }else {
+          $config = array(
+            'allowed_types' => 'jpg|png|pdf|jpeg|docx|doc|odt',
+            'max_size'      => 10000,
+            'overwrite'     => TRUE,
+            'upload_path'   => './assets_sys/files/adk/'.$pathToFile,
+            'encrypt_name'  => TRUE,
+          );
+          $createDir = mkdir($config['upload_path']);
+          $this->load->library('upload', $config);
+
+          $data = array(
+            'jenisDokumenUd'          => ucwords($page),
+            'path_file'               => $pathToFile,
+            'jumlahPengajuanUd'       => $this->input->post('jumlah_pengajuan'),
+            'persentasePdrb'          => $this->input->post('persentase_pdrb'),
+            'jumlahPengajuanPdrb'     => $this->input->post('jumlah_pdrb'),
+            'pdrbTahapAdk'            => $this->input->post('tahapan_pdrb'),
+            'persentaseAdk'           => $this->input->post('persentase_adk'),
+            'jumlahPengajuanAdk'      => $this->input->post('jumlah_adk'),
+            'adkTahapAdk'             => $this->input->post('tahapan_adk'),
+            'createdAtUd'             => date('Y-m-d'),
+            'petugasId'               => $this->session->userdata('id')
+
+          );
+
+          if (!empty($_FILES['f1']['name'])) {
+            if ($this->upload->do_upload('f1')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF1']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f2']['name'])) {
+            if ($this->upload->do_upload('f2')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF2']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f3']['name'])) {
+            if ($this->upload->do_upload('f3')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF3']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f4']['name'])) {
+            if ($this->upload->do_upload('f4')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF4']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f5']['name'])) {
+            if ($this->upload->do_upload('f5')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF5']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f6']['name'])) {
+            if ($this->upload->do_upload('f6')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF6']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f7']['name'])) {
+            if ($this->upload->do_upload('f7')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF7']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f8']['name'])) {
+            if ($this->upload->do_upload('f8')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF8']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f9']['name'])) {
+            if ($this->upload->do_upload('f9')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF9']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f10']['name'])) {
+            if ($this->upload->do_upload('f10')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF10']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f11']['name'])) {
+            if ($this->upload->do_upload('f11')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF11']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f12']['name'])) {
+            if ($this->upload->do_upload('f12')) {
+              $namaFile11 = 'ADK_' . md5($date.'F12-ADK');
+              $data_file = $this->upload->data();
+            }
+            $data['udAdkF12']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+          }
+
+          if (!empty($_FILES['f13']['name'])) {
+            if ($this->upload->do_upload('f13')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF13']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+          if (!empty($_FILES['f14']['name'])) {
+            if ($this->upload->do_upload('f14')) {
+              $data_file = $this->upload->data();
+              $data['udAdkF14']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            }
+          }
+
+        $this->crud->upload_file($data);
+        $this->session->set_flashdata('msg', 'Berkas Untuk ADK sudah Di Upload Jika Belum Lengkap, Kamu Bisa Edit Datanya di Fitur Edit Berkas Upload ADK');
+        redirect('upload_dokumen');
+        }
+        break;
+
+        case 'dds':
+          $this->_rules_upload($page);
+          if ($this->form_validation->run() == FALSE) {
+            $this->step_upload_dokumen($page);
+          }else {
+            $config = array(
+              'allowed_types' => 'jpg|png|pdf|jpeg|docx|doc|odt',
+              'max_size'      => 10000,
+              'overwrite'     => TRUE,
+              'upload_path'   => './assets_sys/files/dds/'.$pathToFile,
+              'encrypt_name'  => TRUE,
+            );
+            $createDir = mkdir($config['upload_path'], 0755, TRUE);
+            $this->load->library('upload', $config);
+
+            $data = array(
+              'jenisDokumenUd'          => ucwords($page),
+              'jumlahPengajuanUd'       => $this->input->post('jumlah_pengajuan'),
+              'persentaseDds'           => $this->input->post('persentase_dds'),
+              'ddsTahap'                => $this->input->post('tahapan_dds'),
+              'bltDds'                  => $this->input->post('jumlah_blt_dds'),
+              'jumlahBltDds'            => $this->input->post('jumlah_non_blt'),
+              'createdAtUd'             => date('Y-m-d'),
+              'petugasId'               => $this->session->userdata('id')
+            );
+
+            if (!empty($_FILES['f1']['name'])) {
+              if ($this->upload->do_upload('f1')) {
+                $data_file = $this->upload->data();
+                $data['udDdsF1']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              }
+            }
+
+            if (!empty($_FILES['f2']['name'])) {
+              if ($this->upload->do_upload('f2')) {
+                $data_file = $this->upload->data();
+                $data['udDdsF2']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              }
+            }
+
+            if (!empty($_FILES['f3']['name'])) {
+              if ($this->upload->do_upload('f3')) {
+                $data_file = $this->upload->data();
+                $data['udDdsF3']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              }
+            }
+
+            if (!empty($_FILES['f4']['name'])) {
+              if ($this->upload->do_upload('f4')) {
+                $data_file = $this->upload->data();
+                $data['udDdsF4']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              }
+            }
+
+            if (!empty($_FILES['f5']['name'])) {
+              if ($this->upload->do_upload('f5')) {
+                $data_file = $this->upload->data();
+                $data['udDdsF5']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              }
+            }
+
+            if (!empty($_FILES['f6']['name'])) {
+              if ($this->upload->do_upload('f6')) {
+                $data_file = $this->upload->data();
+                $data['udDdsF6']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              }
+            }
+
+            if (!empty($_FILES['f7']['name'])) {
+              if ($this->upload->do_upload('f7')) {
+                $data_file = $this->upload->data();
+                $data['udDdsF7']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              }
+            }
+
+            if (!empty($_FILES['f8']['name'])) {
+              if ($this->upload->do_upload('f8')) {
+                $data_file = $this->upload->data();
+                $data['udDdsF8']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              }
+            }
+
+            if (!empty($_FILES['f9']['name'])) {
+              if ($this->upload->do_upload('f9')) {
+                $data_file = $this->upload->data();
+                $data['udDdsF9']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              }
+            }
+
+            if (!empty($_FILES['f10']['name'])) {
+              if ($this->upload->do_upload('f10')) {
+                $data_file = $this->upload->data();
+                $data['udDdsF10']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              }
+            }
+
+          $this->crud->upload_file($data);
+          $this->session->set_flashdata('msg', 'Berkas Untuk DDS sudah Di Upload Jika Belum Lengkap, Kamu Bisa Edit Datanya di Fitur Edit Berkas Upload ADK');
+          redirect('upload_dokumen');
+          }
+          break;
+
+    }
+  }
+
 
   function dDesa_list($part)
   {
     $gampong_id  = $this->session->userdata('gampong');
     switch ($part) {
       case 'adk':
-      $db = $this->crud->get_user_dana_desa($gampong_id);
+      $db = $this->crud->get_user_dana_adk($gampong_id);
+      // echo "<pre>";
+      // var_dump($db->result());
+      // echo "</pre>";
+      // die();
       $titles = "Alokasi Dana Kampung";
         break;
 
@@ -875,6 +1397,15 @@ class Administration extends CI_Controller{
       'db'    => $db->result(),
     );
     $this->load->view('main', $data);
+  }
+
+  function del_surat($set,$id)
+  {
+
+    $check = $this->crud->delete_berkas_surat($set, $id);
+    $this->session->set_flashdata('msg', 'Berhasil Menghapus Data !');
+    redirect('dana_desa'.'/'.$set);
+
   }
 
   function lengkapi_profil($params)
@@ -900,7 +1431,7 @@ class Administration extends CI_Controller{
   {
     $date = date('Y-m-d');
     $check = $this->session->userdata('email');
-    $this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required', array('required' => '%s harus di pilih'));
+    // $this->form_validation->set_rules('jabatan', 'Jabatan', 'trim|required', array('required' => '%s harus di pilih'));
     $this->_rules_penduduk();
     if ($this->form_validation->run() == FALSE) {
       $this->lengkapi_profil(sha1($check));
@@ -920,7 +1451,7 @@ class Administration extends CI_Controller{
         'namaP'         => $this->input->post('nama_lengkap',TRUE),
         'nikP'          => $this->input->post('nik',TRUE),
         'jenisKelaminP' => $this->input->post('jenisKelamin',TRUE),
-        'jabatanPid'    => $this->input->post('jabatan', TRUE),
+        // 'jabatanPid'    => $this->input->post('jabatan', TRUE),
         'nomorHpP'      => $this->input->post('hp',TRUE),
         'createdAt'     => $date,
       );
@@ -937,7 +1468,92 @@ class Administration extends CI_Controller{
     }
   }
 
+  function pengaturan_gampong($id)
+  {
+    $db       = $this->crud->get_gampong_single($id)->row();
+    $penduduk = $this->crud->get_pendudukBy_gampong($id)->result();
+    $jabatan  = $this->crud->get_jabatan_all()->result();
+    $xR       = $this->crud->get_pendudukAndJabatan($id)->result();
+    $geuchik  = $this->crud->getGeuchik($id);
+    $kaur     = $this->crud->getKaur($id);
+    $sekdes   = $this->crud->getSekdes($id);
 
+    $data = array(
+      'title'     => 'Data Master Gampong '. $db->namaG,
+      'opt'       => 'form',
+      'page'      => 'page/admin/pengaturan_gampong',
+      'db'        => $db,
+      'penduduk'  => $penduduk,
+      'jabatan'   => $jabatan,
+      'geuchik'   => $geuchik,
+      'kaur'      => $kaur,
+      'sekdes'    => $sekdes,
+
+    );
+
+    $this->load->view('main', $data);
+  }
+
+  function prosesPengaturanGampong($id)
+  {
+    $jabatan    = $this->input->post('jabatan');
+    $pemilik    = $this->input->post('penduduk');
+    $jenis_bank = $this->input->post('jenis_bank');
+    $norek      = $this->input->post('norek');
+
+    $this->form_validation->set_rules('jabatan', 'Jabatan', 'trim');
+    $this->form_validation->set_rules('penduduk', 'Pemilik Jabatan', 'trim');
+    if ($this->form_validation->run() == FALSE) {
+      $this->pengaturan_gampong($id);
+    }else {
+      $params  = $this->crud->get_single_jabatan($jabatan)->row();
+      switch ($params->label) {
+      case 'Kaur Keuangan':
+        if (!empty($jabatan) && !empty($pemilik)) {
+          $data = array(
+            'idJKG'   => $jabatan,
+            'idKaurG' => $pemilik,
+          );
+        }
+
+        break;
+
+      case 'Keuchik':
+        if (!empty($jabatan) && !empty($pemilik)) {
+        $data = array(
+            'idJGG'      => $jabatan,
+            'idGeuchikG' => $pemilik,
+          );
+        }
+
+        break;
+
+      case 'Sekretaris Gampong':
+        if (!empty($jabatan) && !empty($pemilik)) {
+          $data = array(
+            'idJSG'         => $jabatan,
+            'idSekretarisG' => $pemilik,
+          );
+        }
+
+        break;
+      }
+      $data['createdAt'] = date('Y-m-d');
+
+      if ($jenis_bank != null && $norek != null) {
+        $data['namaBankG'] = $jenis_bank;
+        $data['rekeningG'] = $norek;
+      }
+
+      $idP = $this->input->post('penduduk');
+      $setJabatan['jabatanPid'] = $jabatan;
+
+      $this->crud->update_penggunaan_jabatan($id, $data);
+      $this->crud->update_penduduk_jabatan($idP,$setJabatan);
+      $this->session->set_flashdata('msg','Berhasil memperbaharui identitas desa atau gampong');
+      redirect('pengaturanGampong/'.$id);
+    }
+  }
 
   public function _rules_penduduk()
   {
@@ -1321,6 +1937,74 @@ class Administration extends CI_Controller{
 
 
     return;
+  }
+
+  public function _rules_upload($page)
+  {
+    switch ($page) {
+      case 'adk':
+        $this->form_validation->set_rules('tahapan_pdrb', 'Tahapan PDRB', 'trim|required',
+        array(
+          'required' => '%s Harus dipilih !',
+        ));
+        $this->form_validation->set_rules('jumlah_pengajuan', 'Jumlah Pengajuan', 'trim|required|numeric',
+        array(
+          'required' => '%s Harus diisi !',
+          'numeric' => '%s Harus Berisi Angka Saja !',
+        ));
+        $this->form_validation->set_rules('jumlah_pdrb', 'Jumlah PDRB', 'trim|required|numeric',
+        array(
+          'required' => '%s Harus diisi !',
+          'numeric' => '%s Harus Berisi Angka Saja !',
+        ));
+        $this->form_validation->set_rules('persentase_pdrb', 'Persentase PDRB', 'trim|required|numeric',
+        array(
+          'required' => '%s Harus diisi !',
+          'numeric' => '%s Harus Berisi Angka Saja Tanpa Symbol Persen !',
+        ));
+        $this->form_validation->set_rules('persentase_adk', 'Persentase ADK', 'trim|required|numeric',
+        array(
+          'required' => '%s Harus diisi !',
+          'numeric' => '%s Harus Berisi Angka Saja Tanpa Symbol Persen !',
+        ));
+        $this->form_validation->set_rules('jumlah_adk', 'Jumlah ADK', 'trim|required|numeric',
+        array(
+          'required' => '%s Harus diisi !',
+          'numeric' => '%s Harus Berisi Angka Saja !',
+        ));
+        $this->form_validation->set_rules('tahapan_adk', 'Tahapan ADK', 'trim|required',
+        array(
+          'required' => '%s Harus dipilih !',
+        ));
+        break;
+
+      case 'dds':
+        $this->form_validation->set_rules('tahapan_dds', 'Tahapan DDS', 'trim|required',
+        array(
+          'required' => '%s Harus dipilih !',
+        ));
+        $this->form_validation->set_rules('persentase_dds', 'Persentase DDS', 'trim|required|numeric',
+        array(
+          'required' => '%s Harus diisi !',
+          'numeric' => '%s Harus Berisi Angka Saja !',
+        ));
+        $this->form_validation->set_rules('jumlah_pengajuan', 'Jumlah Pengajuan DDS', 'trim|required|numeric',
+        array(
+          'required' => '%s Harus diisi !',
+          'numeric' => '%s Harus Berisi Angka Saja !',
+        ));
+        $this->form_validation->set_rules('jumlah_blt_dds', 'Jumlah BLT DDS 3 Bulan', 'trim|required|numeric',
+        array(
+          'required' => '%s Harus diisi !',
+          'numeric' => '%s Harus Berisi Angka Saja Tanpa Symbol Persen !',
+        ));
+        $this->form_validation->set_rules('jumlah_blt_dds', 'Jumlah Non BLT DDS', 'trim|required|numeric',
+        array(
+          'required' => '%s Harus diisi !',
+          'numeric' => '%s Harus Berisi Angka Saja Tanpa Symbol Persen !',
+        ));
+        break;
+    }
   }
 
   function isLogin()

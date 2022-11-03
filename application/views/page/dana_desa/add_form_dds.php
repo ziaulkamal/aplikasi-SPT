@@ -20,7 +20,7 @@
               <form class="theme-form mega-form" id="myForm" method="POST" action="<?= base_url('s/dds/_process/') . $jenis ?>" enctype="multipart/form-data">
                 <div class="mb-3 input-group">
                   <button class="input-group-text btn btn-primary" onclick="isiOtomatis()" type="button">Periksa NIK</button>
-                  <input class="form-control" type="text" id="nik" name="nik" maxlength="16">
+                  <input class="form-control" type="text" id="nik" name="nik" value="<?= $this->session->userdata('nik') ?>" maxlength="16" readonly>
                 </div>
                 <div class="mb-3 row">
                   <div class="col-sm-3">
@@ -108,7 +108,7 @@
               <form class="theme-form mega-form" id="myForm" method="POST" action="<?= base_url('s/dds/_process/') . $jenis ?>" enctype="multipart/form-data">
                 <div class="mb-3 input-group">
                   <button class="input-group-text btn btn-primary" onclick="isiOtomatis()" type="button">Periksa NIK</button>
-                  <input class="form-control" type="text" id="nik" name="nik" maxlength="16">
+                  <input class="form-control" type="text" id="nik" name="nik" value="<?= $this->session->userdata('nik') ?>" maxlength="16" readonly>
                 </div>
                 <div class="mb-3 row">
                   <div class="col-sm-4">
@@ -221,7 +221,7 @@
               <form class="theme-form mega-form" id="myForm" method="POST" action="<?= base_url('s/dds/_process/') . $jenis ?>" enctype="multipart/form-data">
                 <div class="mb-3 input-group">
                   <button class="input-group-text btn btn-primary" onclick="isiOtomatis()" type="button">Periksa NIK</button>
-                  <input class="form-control" type="text" id="nik" name="nik" maxlength="16">
+                  <input class="form-control" type="text" id="nik" name="nik" value="<?= $this->session->userdata('nik') ?>" maxlength="16" readonly>
                 </div>
                 <div class="mb-3 row">
                   <div class="col-sm-4">
@@ -336,7 +336,7 @@
               <form class="theme-form mega-form" id="myForm" method="POST" action="<?= base_url('s/dds/_process/') . $jenis ?>" enctype="multipart/form-data">
                 <div class="mb-3 input-group">
                   <button class="input-group-text btn btn-primary" onclick="isiOtomatis()" type="button">Periksa NIK</button>
-                  <input class="form-control" type="text" id="nik" name="nik" maxlength="16">
+                  <input class="form-control" type="text" id="nik" name="nik" value="<?= $this->session->userdata('nik') ?>" maxlength="16" readonly>
                 </div>
                 <div class="mb-3 row">
                   <div class="col-sm-3">
@@ -429,6 +429,11 @@
             <?php } ?>
             <div class="card-body">
               <form class="theme-form mega-form" id="myForm" method="POST" action="<?= base_url('s/dds/_process/') . $jenis ?>" enctype="multipart/form-data">
+                <div class="mb-3 input-group">
+                  <button class="input-group-text btn btn-primary" onclick="isiOtomatis()" type="button">Periksa NIK</button>
+                  <input class="form-control" type="text" id="nik" name="nik" value="<?= $this->session->userdata('nik') ?>" maxlength="16" readonly>
+                </div>
+
                 <div class="mb-3 row">
                   <label class="col-sm-6 col-form-label">Penyerapan Dana Desa Sebelumnya</label>
                   <div class="col-sm-6">
@@ -491,6 +496,25 @@
                     </div>
                   </div>
                 </div>
+                <div class="mb-3">
+                  <label class="col-form-label">Nama Lengkap</label>
+                  <input class="form-control" type="text" id="nama" name="nama" readonly>
+                </div>
+                <div class="mb-3">
+                  <label class="col-form-label">Jabatan</label>
+                  <input class="form-control" type="hidden" id="jabatanId" name="jabatan" readonly>
+                  <input class="form-control" type="text" id="jabatan" readonly>
+                </div>
+                <div class="mb-3">
+                  <label class="col-form-label">Nomor HP</label>
+                  <input class="form-control" type="text" id="hp" name="hp" readonly>
+                </div>
+                <div class="mb-3">
+                  <label class="col-form-label">Kelurahan / Gampong</label>
+                  <input class="form-control" type="hidden" id="gampongId" name="gampong" readonly>
+                  <input class="form-control" type="text" id="gampong" readonly>
+                </div>
+
                 <div class="mb-3">
                   <input class="form-control" type="hidden" id="id" name="id" readonly value="<?= $this->session->userdata('idP') ?>">
                   <button class="btn btn-primary" type="submit">Simpan</button>

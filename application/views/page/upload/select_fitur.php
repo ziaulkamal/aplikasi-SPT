@@ -1,16 +1,16 @@
-<?php if ($this->session->flashdata('msg')) { ?>
 
-  <div class="alert alert-success outline alert-dismissible fade show" role="alert">
-    <p><b> <?= $this->session->flashdata('msg') ?>! </b></p>
-    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>
-
-<?php } ?>
 
 <div class="page-body">
   <div class="container-fluid">
-
       <div class="row">
+        <?php if($this->session->flashdata('msg')) { ?>
+
+          <div class="alert alert-success outline alert-dismissible fade show" role="alert">
+            <p><b> <?= $this->session->flashdata('msg') ?>! </b></p>
+            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+
+        <?php } ?>
         <div class="col-xl-6">
           <div class="page-header">
             <div class="card">
@@ -80,6 +80,94 @@
           </div>
         </div>
       </div>
+
+<?php if ($check > 0) {?>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h5>Dokumen Yang Telah Di Upload</h5>
+        </div>
+        <div class="card-body">
+          <div class="dt-ext table-responsive">
+            <table class="display" id="responsive">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Jenis Dokumen</th>
+                  <th>Tahapan</th>
+                  <th>Tanggal Dibuat</th>
+                  <th>Opsi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php $no = 1;
+                foreach ($db as $r) { ?>
+                  <tr>
+                      <td><?= $no++ ?></td>
+                      <td><?= strtoupper($r->jenisDokumenUd) ?></td>
+                      <td><?php
+                      if ($r->adkTahapAdk != NULL) {
+                        $params = $r->adkTahapAdk;
+                      }elseif ($r->ddsTahap != NULL) {
+                        $params = $r->ddsTahap;
+                      }
+
+                      switch ($params) {
+                        case '1':
+                          echo "I";
+                          break;
+
+                        case '2':
+                          echo "II";
+                          break;
+
+                        case '3':
+                          echo "III";
+                          break;
+
+                        case '4':
+                          echo "IV";
+                          break;
+
+                        case '5':
+                          echo "V";
+                          break;
+                        default:
+                          // code...
+                          break;
+                      }
+                      ?></td>
+                      <td><?= $r->createdAtUd ?></td>
+                      <td>
+
+                        <?php if ($r->jenisDokumenUd == 'Adk') { ?>
+                          <a class="btn btn-primary btn-sm" href="<?= base_url('edit_upload_dokumen/adk/'). $r->idUd ?>"><span class="fa fa-edit"></span> Edit</a>
+                          <a class="btn btn-danger btn-sm" href="<?= base_url('dokumen/delete/'). $r->idUd ?>"><span class="fa fa-trash"></span> Hapus</a>
+                        <?php }elseif ($r->jenisDokumenUd == 'Dds') { ?>
+                          <a class="btn btn-primary btn-sm" href="<?= base_url('edit_upload_dokumen/dds/'). $r->idUd ?>"><span class="fa fa-edit"></span> Edit</a>
+                          <a class="btn btn-danger btn-sm" href="<?= base_url('dokumen/delete/'). $r->idUd ?>"><span class="fa fa-trash"></span> Hapus</a>
+                        <?php } ?>
+
+                      </td>
+                  </tr>
+                <?php } ?>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
+
+  </div>
+
+<?php } ?>
+    </div>
+
   </div>
 </div>

@@ -68,7 +68,7 @@
                   </div>
                 </fieldset>
                 <fieldset>
-                  <div class="form-group">
+                  <!-- <div class="form-group">
                     <label for="f1-first-name">Jabatan Di Desa / Gampong</label>
                     <select class="js-example-disabled-results col-sm-12" name="jabatan" type="text">
                       <option value="" selected>-- Pilih --</option>
@@ -79,7 +79,7 @@
                       <?php } ?>
 
                     </select>
-                  </div>
+                  </div> -->
                   <div class="form-group">
                     <label for="f1-first-name">Desa / Gampong</label>
                     <select class="js-example-disabled-results col-sm-12" name="gampong">

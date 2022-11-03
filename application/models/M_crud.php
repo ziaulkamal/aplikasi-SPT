@@ -263,14 +263,128 @@ class M_crud extends CI_Model{
 
   function get_user_dana_desa($gampond_id)
   {
-    $this->db->join('_jabatan', '_jabatan.idJ = _dana_desa.jabatanDdid');
-    $this->db->join('_gampong', '_gampong.idG = _dana_desa.gampongDid');
-    // $this->db->join('_penduduk', '_penduduk.idP = _dana_desa.pendudukDdid');
-    $this->db->join('_penduduk', '_penduduk.jabatanPid = _jabatan.idJ');
+    // $this->db->join('_jabatan', '_jabatan.idJ = _dana_desa.jabatanDdid');
+    // $this->db->join('_gampong', '_gampong.idG = _dana_desa.gampongDid');
+    // // $this->db->join('_penduduk', '_penduduk.idP = _dana_desa.pendudukDdid');
+    // $this->db->join('_penduduk', '_penduduk.jabatanPid = _jabatan.idJ');
     $this->db->where('gampongDid', $gampond_id);
     $this->db->order_by('createdAtDD', 'DESC');
     $query = $this->db->get('_dana_desa');
     return $query;
 
+  }
+
+  function get_user_dana_adk($gampond_id)
+  {
+    // $this->db->join('_jabatan', '_jabatan.idJ = _alokasi_dana_desa.jabatanAid');
+    // $this->db->join('_gampong', '_gampong.idG = _alokasi_dana_desa.gampongAdkid');
+    // // $this->db->join('_penduduk', '_penduduk.idP = _dana_desa.pendudukDdid');
+    // $this->db->join('_penduduk', '_penduduk.jabatanPid = _jabatan.idJ');
+    $this->db->where('gampongAdkid', $gampond_id);
+    $this->db->order_by('createdAtDk', 'DESC');
+    $query = $this->db->get('_alokasi_dana_desa');
+    return $query;
+
+  }
+
+  function upload_file($data)
+  {
+    return $this->db->insert('_upload_dokumen', $data);
+  }
+
+  function get_upload_file()
+  {
+    $this->db->select('*');
+    $this->db->order_by('createdAtUd', 'DESC');
+    return $this->db->get('_upload_dokumen');
+  }
+
+  function get_upload_single($id)
+  {
+    $this->db->select('*');
+    $this->db->where('idUd', $id);
+    return $this->db->get('_upload_dokumen');
+  }
+
+  function upload_delete($id)
+  {
+    $this->db->where('idUd', $id);
+    return $this->db->delete('_upload_dokumen');
+  }
+
+  function update_upload($id, $data)
+  {
+    $this->db->where('idUd', $id);
+    return $this->db->update('_upload_dokumen', $data);
+  }
+
+  function get_gampong_single($id)
+  {
+    $this->db->where('idG', $id);
+    return $this->db->get('_gampong');
+  }
+
+  function get_pendudukBy_gampong($gampong)
+  {
+    $this->db->where('gampongPid', $gampong);
+    return $this->db->get('_penduduk');
+  }
+
+  function get_pendudukAndJabatan($id)
+  {
+    $this->db->where('idGampong', $id);
+    return $this->db->get('_petugas_master');
+  }
+
+  function getGeuchik($id)
+  {
+    $this->db->where('idGampong', $id);
+    $this->db->where('jabatanPenduduk', 'Keuchik');
+    return $this->db->get('_petugas_master');
+  }
+
+  function getKaur($id)
+  {
+    $this->db->where('idGampong', $id);
+    $this->db->where('jabatanPenduduk', 'Kaur Keuangan');
+    return $this->db->get('_petugas_master');
+  }
+
+  function getSekdes($id)
+  {
+    $this->db->where('idGampong', $id);
+    $this->db->where('jabatanPenduduk', 'Sekretaris Gampong');
+    return $this->db->get('_petugas_master');
+  }
+
+  function get_single_jabatan($jabatan)
+  {
+    $this->db->where('idJ', $jabatan);
+    return $this->db->get('_jabatan');
+  }
+
+  function update_penggunaan_jabatan($id, $data)
+  {
+    $this->db->where('idG', $id);
+    return $this->db->update('_gampong', $data);
+  }
+
+  function update_penduduk_jabatan($idP,$setJabatan)
+  {
+    $this->db->where('idP', $idP);
+    return $this->db->update('_penduduk', $setJabatan);
+  }
+
+  function delete_berkas_surat($set, $id)
+  {
+    if ($set == 'adk') {
+      $this->db->where('idAdk', $id);
+      $this->db->delete('_alokasi_dana_desa');
+      return;
+    }elseif ($set == 'dds') {
+      $this->db->where('idDd', $id);
+      $this->db->delete('_dana_desa');
+      return;
+    }
   }
 }
