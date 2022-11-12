@@ -19,7 +19,7 @@
 <script src="<?= base_url('assets_sys/') ?>js/icons/feather-icon/feather-icon.js"></script>
 <script src="<?= base_url('assets_sys/') ?>js/sidebar-menu.js"></script>
 <script src="<?= base_url('assets_sys/') ?>js/config.js"></script>
-<?php if (isset($opt) && $opt == 'table') { ?>
+<?php if (isset($opt) && $opt == 'table' || $this->uri->segment(1) == 'pengaturan_kecamatan') { ?>
 <script src="<?= base_url('assets_sys/') ?>js/datatable/datatables/jquery.dataTables.min.js"></script>
 <script src="<?= base_url('assets_sys/') ?>js/datatable/datatable-extension/dataTables.buttons.min.js"></script>
 <script src="<?= base_url('assets_sys/') ?>js/datatable/datatable-extension/dataTables.bootstrap4.min.js"></script>

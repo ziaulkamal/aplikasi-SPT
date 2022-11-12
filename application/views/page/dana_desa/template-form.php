@@ -59,7 +59,7 @@
                       </select>
                     </div>
                     <div class="col-sm-3 ">
-                      <label class="col-form-label">Angka *<span>(dalam persen)</span></label>
+                      <label class="col-form-label">Angka *<code>(dalam persen)</code></label>
                       <div class="input-group">
                         <input class="form-control" type="number" name="persentase" maxlength="3">
                         <span class="input-group-text btn btn-white" >%</span>
@@ -116,7 +116,7 @@
                       </select>
                     </div>
                     <div class="col-sm-4 ">
-                      <label class="col-form-label">Angka *<span>(dalam persen)</span></label>
+                      <label class="col-form-label">Angka *<code>(dalam persen)</code></label>
                       <div class="input-group">
                         <input class="form-control" type="number" name="persentase" maxlength="3">
                         <span class="input-group-text btn btn-white" >%</span>
@@ -198,7 +198,7 @@
                       </select>
                     </div>
                     <div class="col-sm-4 ">
-                      <label class="col-form-label">Angka *<span>(dalam persen)</span></label>
+                      <label class="col-form-label">Angka *<code>(dalam persen)</code></label>
                       <div class="input-group">
                         <input class="form-control" type="number" name="persentase" maxlength="3">
                         <span class="input-group-text btn btn-white" >%</span>
@@ -280,7 +280,7 @@
                       </select>
                     </div>
                     <div class="col-sm-4 ">
-                      <label class="col-form-label">Angka *<span>(dalam persen)</span></label>
+                      <label class="col-form-label">Angka *<code>(dalam persen)</code></label>
                       <div class="input-group">
                         <input class="form-control" type="number" name="persentase" maxlength="3">
                         <span class="input-group-text btn btn-white" >%</span>
@@ -363,7 +363,7 @@
                       </select>
                     </div>
                     <div class="col-sm-3 ">
-                      <label class="col-form-label">Angka *<span>(dalam persen)</span></label>
+                      <label class="col-form-label">Angka *<code>(dalam persen)</code></label>
                       <div class="input-group">
                         <input class="form-control" type="number" name="persentase" maxlength="3">
                         <span class="input-group-text btn btn-white" >%</span>

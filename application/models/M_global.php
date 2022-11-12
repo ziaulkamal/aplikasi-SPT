@@ -34,4 +34,40 @@ class M_global extends CI_Model{
     $this->db->where('idPenduduk', $id);
     return $this->db->get('_petugas_master')->row();
   }
+
+  function get_responAll($id)
+  {
+    $this->db->join('_gampong', '_gampong.idG = _respon_kecamatan.gampongIdRk');
+    $this->db->where('idRk', $id);
+    return $this->db->get('_respon_kecamatan');
+  }
+
+  function getPetugasKecamatan($status)
+  {
+    $this->db->where('statusKecamatan', $status);
+    $this->db->limit(1);
+    return $this->db->get('_kecamatan');
+  }
+
+  function loginValidation($email, $passwd)
+  {
+    $this->db->where('email', $email);
+    $this->db->where('password', $passwd);
+    return $this->db->get('_petugas');
+  }
+
+  function update_admin_log($id, $data)
+  {
+    $this->db->where('petugasIdP', $id);
+    $this->db->update('_petugas', $data);
+  }
+
+  function getRekomendasiBantuan($id)
+  {
+    $this->db->join('_gampong', '_gampong.idG = _rekomendasi_bantuan.gampongRbId');
+    $this->db->where('idRb', $id);
+    return $this->db->get('_rekomendasi_bantuan')->row();
+  }
+
+
 }

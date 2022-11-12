@@ -15,8 +15,12 @@ $route['log_out'] = 'Setting/log_out';
 $route['resetPassword/(:any)'] = 'Setting/reset_password/$1';
 $route['ressPass/(:any)'] = 'Setting/reset_process/$1';
 $route['ressLogin'] = 'Setting/login_after_reset';
+$route['admin/login'] = 'Setting/login_admin';
+$route['admin/login/proses'] = 'Setting/proses_login_admin';
 
 // Admin page
+$route['del_user/(:any)'] = 'Setting/hapus_user/$1';
+$route['pengaturan_gampong/(:any)'] = 'Setting/data_user/$1';
 $route['admin/user/(:any)'] = 'Setting/data_user/$1';
 $route['aktivasi/user/(:any)'] = 'Setting/aktivasi_user/$1';
 $route['reject/user/(:any)'] = 'Setting/reject_user/$1';
@@ -58,6 +62,7 @@ $route['s/dds/_tambah/(:any)'] = 'Administration/form_dds/$1';
 $route['s/dds/_process/(:any)'] = 'Administration/proses_dds/$1';
 
 // Upload Verifikasi
+$route['berkas_masuk'] = 'Admin_Kecamatan/berkasMasuk';
 $route['upload_dokumen'] = 'Administration/upload_dokumen';
 $route['upload_dokumen/(:any)'] = 'Administration/step_upload_dokumen/$1';
 $route['proses_upload/(:any)'] = 'Administration/proses_upload_dokumen/$1';
@@ -65,6 +70,11 @@ $route['proses_upload/(:any)'] = 'Administration/proses_upload_dokumen/$1';
 // Edit Upload
 $route['edit_upload_dokumen/(:any)/(:any)'] = 'Administration/step_edit_upload_dokumen/$1/$2';
 $route['prosesEdit_upload_dokumen/(:any)/(:any)'] = 'Administration/proses_edit_upload_dokumen/$1/$2';
+
+// Rekomendasi Bantuan
+$route['rekomendasi_bantuan'] = 'Admin_Kecamatan/rekomendasi_bantuan';
+$route['rekomendasi_bantuan/_buat'] = 'Admin_Kecamatan/buatRekomendasi';
+$route['rekomendasi_bantuan/_proses'] = 'Admin_Kecamatan/prosesRekomendasiBantuan';
 
 
 // Delete dokumen
@@ -81,10 +91,34 @@ $route['json/(:any)'] = 'Request_ajax/jsonPenduduk/$1';
 
 // Donwload Dokumen
 $route['download/(:any)/(:any)/(:any)'] = 'Download_dokumen/download/$1/$2/$3';
+$route['downloads/(:any)'] = 'Download_dokumen/download_respon/$1';
+$route['downloads_ajb/(:any)/(:any)/(:any)'] = 'Download_dokumen/download_ajb/$1/$2/$3';
+$route['download_rekomendasi/(:any)'] = 'Download_dokumen/rekomendasi_bantuan/$1';
 
 
 $route['pengaturanGampong/(:any)'] = 'Administration/pengaturan_gampong/$1';
 $route['prosesGampongSetting/(:any)'] = 'Administration/prosesPengaturanGampong/$1';
+
+
+// Untuk Kecamatan Only
+$route['KDashboard'] = 'Admin_Kecamatan/index';
+$route['atur_petugas_baru'] = 'Admin_Kecamatan/buatAdmin';
+$route['atur_petugas_baru/_proses'] = 'Admin_Kecamatan/processBuatAdmin';
+$route['edit_petugas/(:any)'] = 'Admin_Kecamatan/edit_petugas/$1';
+$route['edit_petugas/_proses/(:any)'] = 'Admin_Kecamatan/proses_edit_petugas/$1';
+$route['petugas/_hapus/(:any)'] = 'Admin_Kecamatan/hapusAdmin/$1';
+$route['pengaturan_kecamatan'] = 'Admin_Kecamatan/aturPetugas';
+$route['pengaturan_kecamatan/_hapus/(:any)'] = 'Admin_Kecamatan/deletePetugas/$1';
+$route['pengaturan_kecamatan/_proses'] = 'Admin_Kecamatan/prosesPetugas';
+
+$route['surat_kecamatan'] = 'Admin_Kecamatan/daftarSurat';
+$route['surat_kecamatan/(:any)/(:any)'] = 'Admin_Kecamatan/buatSurat/$1/$2';
+$route['surat_proses/(:any)/(:any)'] = 'Admin_Kecamatan/prosesBuatSurat/$1/$2';
+$route['ajb/_buat_ajb'] = 'Admin_Kecamatan/buatAJB';
+$route['ajb/_proses_ajb'] = 'Admin_Kecamatan/prosesAjb';
+$route['ajb'] = 'Admin_Kecamatan/daftarAJB';
+$route['hapus_ajb/(:any)'] = 'Admin_Kecamatan/hapusAjb/$1';
+$route['delete_berkas/(:any)'] = 'Admin_Kecamatan/delete_berkas/$1';
 
 $route['404_override'] = 'Setting/error_404';
 $route['translate_uri_dashes'] = FALSE;

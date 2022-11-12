@@ -6,15 +6,6 @@
 
         <div class="page-body">
           <div class="container-fluid">
-            <?php
-
-            echo "<pre>";
-            var_dump($this->session->userdata);
-            echo "</pre>";
-
-
-
-             ?>
             <div class="page-header">
               <?php if ($this->session->flashdata('wellcome')) { ?>
                 <div class="row">
@@ -44,27 +35,15 @@
 
                 </div>
               <?php } ?>
-                <?php if ($this->session->userdata('userLogin') == TRUE && $this->session->userdata('level') == '2') {?>
+                <?php if ($this->session->userdata('userLogin') == TRUE && $this->session->userdata('isAdmin') == TRUE) {?>
                 <div class="row">
                   <div class="col-sm-6 col-xl-3 col-lg-6">
                     <div class="card o-hidden border-0">
                       <div class="bg-primary b-r-4 card-body">
                         <div class="media static-top-widget">
                           <div class="align-self-center text-center"><i data-feather="database"></i></div>
-                          <div class="media-body"><span class="m-0">Menunggu Verifikasi</span>
-                            <h4 class="mb-0 counter">12</h4><i class="icon-bg" data-feather="database"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-sm-6 col-xl-3 col-lg-6">
-                    <div class="card o-hidden border-0">
-                      <div class="bg-secondary b-r-4 card-body">
-                        <div class="media static-top-widget">
-                          <div class="align-self-center text-center"><i data-feather="shopping-bag"></i></div>
-                          <div class="media-body"><span class="m-0">Dana Desa</span>
-                            <h4 class="mb-0 counter">33</h4><i class="icon-bg" data-feather="shopping-bag"></i>
+                          <div class="media-body"><span class="m-0">Dokumen DDS (Desa / Gampong)</span>
+                            <h4 class="mb-0 counter"><?= $db['jumlah_dds']; ?></h4><i class="icon-bg" data-feather="database"></i>
                           </div>
                         </div>
                       </div>
@@ -74,9 +53,9 @@
                     <div class="card o-hidden border-0">
                       <div class="bg-primary b-r-4 card-body">
                         <div class="media static-top-widget">
-                          <div class="align-self-center text-center"><i data-feather="message-circle"></i></div>
-                          <div class="media-body"><span class="m-0">Bantuan Sosial</span>
-                            <h4 class="mb-0 counter">2</h4><i class="icon-bg" data-feather="message-circle"></i>
+                          <div class="align-self-center text-center"><i data-feather="database"></i></div>
+                          <div class="media-body"><span class="m-0">Dokumen ADK (Desa / Gampong)</span>
+                            <h4 class="mb-0 counter"><?= $db['jumlah_adk']; ?></h4><i class="icon-bg" data-feather="database"></i>
                           </div>
                         </div>
                       </div>
@@ -86,50 +65,131 @@
                     <div class="card o-hidden border-0">
                       <div class="bg-primary b-r-4 card-body">
                         <div class="media static-top-widget">
-                          <div class="align-self-center text-center"><i data-feather="user-plus"></i></div>
-                          <div class="media-body"><span class="m-0">AJB</span>
-                            <h4 class="mb-0 counter">1</h4><i class="icon-bg" data-feather="user-plus"></i>
+                          <div class="align-self-center text-center"><i data-feather="database"></i></div>
+                          <div class="media-body"><span class="m-0">Dokumen DDS (Kecamatan)</span>
+                            <h4 class="mb-0 counter"><?= $db['jumlah_dds_k']; ?></h4><i class="icon-bg" data-feather="database"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-xl-3 col-lg-6">
+                    <div class="card o-hidden border-0">
+                      <div class="bg-primary b-r-4 card-body">
+                        <div class="media static-top-widget">
+                          <div class="align-self-center text-center"><i data-feather="database"></i></div>
+                          <div class="media-body"><span class="m-0">Dokumen ADK (Kecamatan)</span>
+                            <h4 class="mb-0 counter"><?= $db['jumlah_adk_k']; ?></h4><i class="icon-bg" data-feather="database"></i>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-xl-12 recent-order-sec">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="table-responsive">
-                      <h5>Aktivitas Terakhir</h5>
-                      <table class="table table-bordernone">
-                        <thead>
-                          <tr>
-                            <th>Tugas</th>
-                            <th>Dikerjakan</th>
-                            <th>Tanggal Update</th>
-                            <th>Status</th>
-                            <th>Detail </th>
-
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <p>16 August</p>
-                            </td>
-                            <td>
-                              <p>54146</p>
-                            </td>
-                            <td>111</td>
-                            <td>
-                              <p>$210326</p>
-                            </td>
-                            <td>
-                              <p>Done</p>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
+                <div class="row">
+                  <div class="col-sm-6 col-xl-3 col-lg-6">
+                    <div class="card o-hidden border-0">
+                      <div class="bg-dark b-r-4 card-body">
+                        <div class="media static-top-widget">
+                          <div class="align-self-center text-center"><i data-feather="briefcase"></i></div>
+                          <div class="media-body"><span class="m-0">Dokumen AJB</span>
+                            <h4 class="mb-0 counter"><?= $db['jumlah_ajb']; ?></h4><i class="icon-bg" data-feather="briefcase"></i>
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="col-sm-6 col-xl-3 col-lg-6">
+                    <div class="card o-hidden border-0">
+                      <div class="bg-dark b-r-4 card-body">
+                        <div class="media static-top-widget">
+                          <div class="align-self-center text-center"><i data-feather="briefcase"></i></div>
+                          <div class="media-body"><span class="m-0">Dokumen Rekomendasi Bantuan</span>
+                            <h4 class="mb-0 counter"><?= $db['jumlah_rekomendasi']; ?></h4><i class="icon-bg" data-feather="briefcase"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-xl-3 col-lg-6">
+                    <div class="card o-hidden border-0">
+                      <div class="bg-dark b-r-4 card-body">
+                        <div class="media static-top-widget">
+                          <div class="align-self-center text-center"><i data-feather="info"></i></div>
+                          <div class="media-body"><span class="m-0">Desa / Gampong Terdata</span>
+                            <h4 class="mb-0 counter"><?= $db['jumlah_gampong']; ?></h4><i class="icon-bg" data-feather="info"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 col-xl-3 col-lg-6">
+                    <div class="card o-hidden border-0">
+                      <div class="bg-dark b-r-4 card-body">
+                        <div class="media static-top-widget">
+                          <div class="align-self-center text-center"><i data-feather="users"></i></div>
+                          <div class="media-body"><span class="m-0">User Terdata</span>
+                            <h4 class="mb-0 counter"><?= $db['jumlah_user']; ?></h4><i class="icon-bg" data-feather="users"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <?php }
+
+                if ($this->session->userdata('userLogin') == TRUE && $this->session->userdata('isAdmin') == FALSE) { ?>
+                  <div class="row">
+                    <div class="col-sm-6 col-xl-3 col-lg-6">
+                      <div class="card o-hidden border-0">
+                        <div class="bg-primary b-r-4 card-body">
+                          <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i data-feather="database"></i></div>
+                            <div class="media-body"><span class="m-0">Dokumen DDS (Desa / Gampong)</span>
+                              <h4 class="mb-0 counter"><?= $db['jumlah_dds']; ?></h4><i class="icon-bg" data-feather="database"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3 col-lg-6">
+                      <div class="card o-hidden border-0">
+                        <div class="bg-primary b-r-4 card-body">
+                          <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i data-feather="database"></i></div>
+                            <div class="media-body"><span class="m-0">Dokumen ADK (Desa / Gampong)</span>
+                              <h4 class="mb-0 counter"><?= $db['jumlah_adk']; ?></h4><i class="icon-bg" data-feather="database"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3 col-lg-6">
+                      <div class="card o-hidden border-0">
+                        <div class="bg-primary b-r-4 card-body">
+                          <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i data-feather="database"></i></div>
+                            <div class="media-body"><span class="m-0">Dokumen DDS (Kecamatan)</span>
+                              <h4 class="mb-0 counter"><?= $db['jumlah_dds_k']; ?></h4><i class="icon-bg" data-feather="database"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3 col-lg-6">
+                      <div class="card o-hidden border-0">
+                        <div class="bg-primary b-r-4 card-body">
+                          <div class="media static-top-widget">
+                            <div class="align-self-center text-center"><i data-feather="database"></i></div>
+                            <div class="media-body"><span class="m-0">Dokumen ADK (Kecamatan)</span>
+                              <h4 class="mb-0 counter"><?= $db['jumlah_adk_k']; ?></h4><i class="icon-bg" data-feather="database"></i>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 <?php }
                 ?>
 

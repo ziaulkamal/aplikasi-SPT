@@ -7,6 +7,7 @@ class Setting extends CI_Controller{
   {
     parent::__construct();
     $this->load->model('M_crud','crud');
+    $this->load->model('M_global','g');
     $this->load->library('form_validation');
   }
 
@@ -86,6 +87,40 @@ class Setting extends CI_Controller{
 
   }
 
+  function login_admin()
+  {
+    $data = array(
+      'title' => 'Login Admin Kecamatan',
+      'action'   => 'admin/login/proses',
+    );
+    $this->load->view('login_admin', $data);
+  }
+
+  function proses_login_admin()
+  {
+    $email  = $this->input->post('email');
+    $passwd = md5(sha1($this->input->post('passwd')));
+    $db = $this->g->loginValidation($email, $passwd);
+    if ($db->num_rows() > 0 ) {
+      $parse_data = $db->row();
+      $id = $parse_data->petugasIdP;
+      $data['loginTerakhir'] = date('Y-m-d');
+      $session_setup = array(
+        'userLogin' => TRUE,
+        'email'     => $parse_data->email,
+        'level'     => 'operator-kecamatan',
+        'isAdmin'     => TRUE,
+        'complete'     => TRUE,
+      );
+      $this->g->update_admin_log($id,$data);
+      $this->session->set_userdata($session_setup);
+      redirect('main');
+    }else {
+      $this->session->set_flashdata('msg', 'Email atau Password Salah');
+      redirect('admin/login');
+    }
+  }
+
   function proses_login()
   {
     $email = $this->input->post('email',TRUE);
@@ -158,6 +193,15 @@ class Setting extends CI_Controller{
       }
     }
   }
+
+  function hapus_user($id)
+  {
+    $this->db->where('idU', $id);
+    $this->db->delete('_user');
+    $this->session->set_flashdata('msg','Berhasil Menghapus Pengguna');
+    redirect('pengaturan_gampong/aktif');
+  }
+
 
   function data_user($part)
   {

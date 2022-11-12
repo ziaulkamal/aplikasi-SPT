@@ -108,35 +108,56 @@
                       <td><?= strtoupper($r->jenisDokumenUd) ?></td>
                       <td><?php
                       if ($r->adkTahapAdk != NULL) {
-                        $params = $r->adkTahapAdk;
-                      }elseif ($r->ddsTahap != NULL) {
-                        $params = $r->ddsTahap;
+                        $paramsAdk = $r->adkTahapAdk;
+
+                        switch ($paramsAdk) {
+                          case '1':
+                            echo "I";
+                            break;
+
+                          case '2':
+                            echo "II";
+                            break;
+
+                          case '3':
+                            echo "III";
+                            break;
+
+                          case '4':
+                            echo "IV";
+                            break;
+
+                          case '5':
+                            echo "V";
+                            break;
+                        }
+                      }
+                      if ($r->ddsTahap != NULL) {
+                        $paramsDds = $r->ddsTahap;
+
+                        switch ($paramsDds) {
+                          case '1':
+                            echo "I";
+                            break;
+
+                          case '2':
+                            echo "II";
+                            break;
+
+                          case '3':
+                            echo "III";
+                            break;
+
+                          case '4':
+                            echo "IV";
+                            break;
+
+                          case '5':
+                            echo "V";
+                            break;
+                        }
                       }
 
-                      switch ($params) {
-                        case '1':
-                          echo "I";
-                          break;
-
-                        case '2':
-                          echo "II";
-                          break;
-
-                        case '3':
-                          echo "III";
-                          break;
-
-                        case '4':
-                          echo "IV";
-                          break;
-
-                        case '5':
-                          echo "V";
-                          break;
-                        default:
-                          // code...
-                          break;
-                      }
                       ?></td>
                       <td><?= $r->createdAtUd ?></td>
                       <td>

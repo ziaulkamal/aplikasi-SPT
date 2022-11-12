@@ -118,8 +118,7 @@
                         <td>
                           <div class="btn-group" role="group" aria-label="Basic example">
                           <a class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#reset<?= $userActive->idU ?>">Reset Password</a>
-                          <a class="btn btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#edit<?= $userActive->idU ?>">Edit</a>
-                          <a class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#susspend<?= $userActive->idU ?>">Blokir</a>
+                          <a class="btn btn-outline-danger" type="button" data-bs-toggle="modal" data-bs-target="#hapus<?= $userActive->idU ?>">Hapus Pengguna</a>
                         </div></td>
                       </tr>
                     <?php } ?>
@@ -193,6 +192,23 @@
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
             <a href="<?= base_url('resetPassword/') . $userActive->idU ?>" class="btn btn-primary" type="button">Yakin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="hapus<?= $userActive->idU ?>" tabindex="-1" role="dialog" aria-labelledby="hapus<?= $userActive->idU ?>" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Konfirmasi Hapus Pengguna !</h5>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>User dengan nama <b>[ <?= ucwords($userActive->namaP); ?> ]</b> dan email <b>[ <?= $userActive->email; ?> ]</b> akan dihapus dari aplikasi ini.<br /> <br />Dan nantinya email ini akan dapat didaftarkan kembali, apakah anda yakin ingin menghapusnya  ?</p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Batalkan</button>
+            <a href="<?= base_url('del_user/') . $userActive->idU ?>" class="btn btn-primary" type="button">Yakin</a>
           </div>
         </div>
       </div>

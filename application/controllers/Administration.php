@@ -919,77 +919,77 @@ class Administration extends CI_Controller{
           if (!empty($_FILES['f1']['name'])) {
             if ($this->upload->do_upload('f1')) {
               $data_file = $this->upload->data();
-              $data['udAdkF1']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF1']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f2']['name'])) {
             if ($this->upload->do_upload('f2')) {
               $data_file = $this->upload->data();
-              $data['udAdkF2']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF2']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f3']['name'])) {
             if ($this->upload->do_upload('f3')) {
               $data_file = $this->upload->data();
-              $data['udAdkF3']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF3']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f4']['name'])) {
             if ($this->upload->do_upload('f4')) {
               $data_file = $this->upload->data();
-              $data['udAdkF4']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF4']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f5']['name'])) {
             if ($this->upload->do_upload('f5')) {
               $data_file = $this->upload->data();
-              $data['udAdkF5']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF5']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f6']['name'])) {
             if ($this->upload->do_upload('f6')) {
               $data_file = $this->upload->data();
-              $data['udAdkF6']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF6']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f7']['name'])) {
             if ($this->upload->do_upload('f7')) {
               $data_file = $this->upload->data();
-              $data['udAdkF7']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF7']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f8']['name'])) {
             if ($this->upload->do_upload('f8')) {
               $data_file = $this->upload->data();
-              $data['udAdkF8']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF8']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f9']['name'])) {
             if ($this->upload->do_upload('f9')) {
               $data_file = $this->upload->data();
-              $data['udAdkF9']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF9']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f10']['name'])) {
             if ($this->upload->do_upload('f10')) {
               $data_file = $this->upload->data();
-              $data['udAdkF10']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF10']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f11']['name'])) {
             if ($this->upload->do_upload('f11')) {
               $data_file = $this->upload->data();
-              $data['udAdkF11']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF11']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
@@ -998,20 +998,20 @@ class Administration extends CI_Controller{
               $namaFile11 = 'ADK_' . md5($date.'F12-ADK');
               $data_file = $this->upload->data();
             }
-            $data['udAdkF12']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            $data['udAdkF12']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
           }
 
           if (!empty($_FILES['f13']['name'])) {
             if ($this->upload->do_upload('f13')) {
               $data_file = $this->upload->data();
-              $data['udAdkF13']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF13']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f14']['name'])) {
             if ($this->upload->do_upload('f14')) {
               $data_file = $this->upload->data();
-              $data['udAdkF14']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF14']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
@@ -1033,70 +1033,70 @@ class Administration extends CI_Controller{
           if (!empty($_FILES['f1']['name'])) {
             if ($this->upload->do_upload('f1')) {
               $data_file = $this->upload->data();
-              $data['udDdsF1']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udDdsF1']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f2']['name'])) {
             if ($this->upload->do_upload('f2')) {
               $data_file = $this->upload->data();
-              $data['udDdsF2']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udDdsF2']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f3']['name'])) {
             if ($this->upload->do_upload('f3')) {
               $data_file = $this->upload->data();
-              $data['udDdsF3']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udDdsF3']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f4']['name'])) {
             if ($this->upload->do_upload('f4')) {
               $data_file = $this->upload->data();
-              $data['udDdsF4']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udDdsF4']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f5']['name'])) {
             if ($this->upload->do_upload('f5')) {
               $data_file = $this->upload->data();
-              $data['udDdsF5']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udDdsF5']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f6']['name'])) {
             if ($this->upload->do_upload('f6')) {
               $data_file = $this->upload->data();
-              $data['udDdsF6']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udDdsF6']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f7']['name'])) {
             if ($this->upload->do_upload('f7')) {
               $data_file = $this->upload->data();
-              $data['udDdsF7']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udDdsF7']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f8']['name'])) {
             if ($this->upload->do_upload('f8')) {
               $data_file = $this->upload->data();
-              $data['udDdsF8']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udDdsF8']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f9']['name'])) {
             if ($this->upload->do_upload('f9')) {
               $data_file = $this->upload->data();
-              $data['udDdsF9']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udDdsF9']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f10']['name'])) {
             if ($this->upload->do_upload('f10')) {
               $data_file = $this->upload->data();
-              $data['udDdsF10']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udDdsF10']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
           break;
@@ -1150,6 +1150,7 @@ class Administration extends CI_Controller{
             'persentasePdrb'          => $this->input->post('persentase_pdrb'),
             'jumlahPengajuanPdrb'     => $this->input->post('jumlah_pdrb'),
             'pdrbTahapAdk'            => $this->input->post('tahapan_pdrb'),
+            'gampondUd'               => $this->session->userdata('gampong'),
             'persentaseAdk'           => $this->input->post('persentase_adk'),
             'jumlahPengajuanAdk'      => $this->input->post('jumlah_adk'),
             'adkTahapAdk'             => $this->input->post('tahapan_adk'),
@@ -1161,77 +1162,77 @@ class Administration extends CI_Controller{
           if (!empty($_FILES['f1']['name'])) {
             if ($this->upload->do_upload('f1')) {
               $data_file = $this->upload->data();
-              $data['udAdkF1']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF1']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f2']['name'])) {
             if ($this->upload->do_upload('f2')) {
               $data_file = $this->upload->data();
-              $data['udAdkF2']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF2']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f3']['name'])) {
             if ($this->upload->do_upload('f3')) {
               $data_file = $this->upload->data();
-              $data['udAdkF3']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF3']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f4']['name'])) {
             if ($this->upload->do_upload('f4')) {
               $data_file = $this->upload->data();
-              $data['udAdkF4']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF4']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f5']['name'])) {
             if ($this->upload->do_upload('f5')) {
               $data_file = $this->upload->data();
-              $data['udAdkF5']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF5']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f6']['name'])) {
             if ($this->upload->do_upload('f6')) {
               $data_file = $this->upload->data();
-              $data['udAdkF6']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF6']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f7']['name'])) {
             if ($this->upload->do_upload('f7')) {
               $data_file = $this->upload->data();
-              $data['udAdkF7']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF7']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f8']['name'])) {
             if ($this->upload->do_upload('f8')) {
               $data_file = $this->upload->data();
-              $data['udAdkF8']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF8']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f9']['name'])) {
             if ($this->upload->do_upload('f9')) {
               $data_file = $this->upload->data();
-              $data['udAdkF9']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF9']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f10']['name'])) {
             if ($this->upload->do_upload('f10')) {
               $data_file = $this->upload->data();
-              $data['udAdkF10']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF10']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f11']['name'])) {
             if ($this->upload->do_upload('f11')) {
               $data_file = $this->upload->data();
-              $data['udAdkF11']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF11']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
@@ -1240,20 +1241,20 @@ class Administration extends CI_Controller{
               $namaFile11 = 'ADK_' . md5($date.'F12-ADK');
               $data_file = $this->upload->data();
             }
-            $data['udAdkF12']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+            $data['udAdkF12']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
           }
 
           if (!empty($_FILES['f13']['name'])) {
             if ($this->upload->do_upload('f13')) {
               $data_file = $this->upload->data();
-              $data['udAdkF13']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF13']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
           if (!empty($_FILES['f14']['name'])) {
             if ($this->upload->do_upload('f14')) {
               $data_file = $this->upload->data();
-              $data['udAdkF14']  = 'ADK_'.md5($data_file['file_name']).$data_file['file_ext'];
+              $data['udAdkF14']  = 'ADK_'.$data_file['file_name'].$data_file['file_ext'];
             }
           }
 
@@ -1275,11 +1276,12 @@ class Administration extends CI_Controller{
               'upload_path'   => './assets_sys/files/dds/'.$pathToFile,
               'encrypt_name'  => TRUE,
             );
-            $createDir = mkdir($config['upload_path'], 0755, TRUE);
+            $createDir = mkdir($config['upload_path']);
             $this->load->library('upload', $config);
 
             $data = array(
               'jenisDokumenUd'          => ucwords($page),
+              'path_file'               => $pathToFile,
               'jumlahPengajuanUd'       => $this->input->post('jumlah_pengajuan'),
               'persentaseDds'           => $this->input->post('persentase_dds'),
               'ddsTahap'                => $this->input->post('tahapan_dds'),
@@ -1292,70 +1294,70 @@ class Administration extends CI_Controller{
             if (!empty($_FILES['f1']['name'])) {
               if ($this->upload->do_upload('f1')) {
                 $data_file = $this->upload->data();
-                $data['udDdsF1']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+                $data['udDdsF1']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
               }
             }
 
             if (!empty($_FILES['f2']['name'])) {
               if ($this->upload->do_upload('f2')) {
                 $data_file = $this->upload->data();
-                $data['udDdsF2']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+                $data['udDdsF2']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
               }
             }
 
             if (!empty($_FILES['f3']['name'])) {
               if ($this->upload->do_upload('f3')) {
                 $data_file = $this->upload->data();
-                $data['udDdsF3']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+                $data['udDdsF3']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
               }
             }
 
             if (!empty($_FILES['f4']['name'])) {
               if ($this->upload->do_upload('f4')) {
                 $data_file = $this->upload->data();
-                $data['udDdsF4']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+                $data['udDdsF4']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
               }
             }
 
             if (!empty($_FILES['f5']['name'])) {
               if ($this->upload->do_upload('f5')) {
                 $data_file = $this->upload->data();
-                $data['udDdsF5']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+                $data['udDdsF5']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
               }
             }
 
             if (!empty($_FILES['f6']['name'])) {
               if ($this->upload->do_upload('f6')) {
                 $data_file = $this->upload->data();
-                $data['udDdsF6']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+                $data['udDdsF6']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
               }
             }
 
             if (!empty($_FILES['f7']['name'])) {
               if ($this->upload->do_upload('f7')) {
                 $data_file = $this->upload->data();
-                $data['udDdsF7']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+                $data['udDdsF7']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
               }
             }
 
             if (!empty($_FILES['f8']['name'])) {
               if ($this->upload->do_upload('f8')) {
                 $data_file = $this->upload->data();
-                $data['udDdsF8']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+                $data['udDdsF8']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
               }
             }
 
             if (!empty($_FILES['f9']['name'])) {
               if ($this->upload->do_upload('f9')) {
                 $data_file = $this->upload->data();
-                $data['udDdsF9']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+                $data['udDdsF9']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
               }
             }
 
             if (!empty($_FILES['f10']['name'])) {
               if ($this->upload->do_upload('f10')) {
                 $data_file = $this->upload->data();
-                $data['udDdsF10']  = 'DDS_'.md5($data_file['file_name']).$data_file['file_ext'];
+                $data['udDdsF10']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
               }
             }
 
