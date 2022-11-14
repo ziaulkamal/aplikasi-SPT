@@ -6,8 +6,9 @@
         <div class="login-card">
 
           <form class="theme-form login-form" method="POST" action="<?= base_url('process/sign_up') ?>" enctype="multipart/form-data">
+            <img class="bg-img-cover" id="mobile-bg" src="<?= base_url('assets_sys/') ?>images/login/bg-login.png" alt="looginpage">
             <h4>Register</h4>
-            <h6><?= $title ?></h6>
+            <span><?= $title ?></span>
             <?= validation_errors('<div class="alert alert-danger dark alert-dismissible fade show" role="alert">','</div>'); ?>
             <div class="form-group">
               <label>Nama Lengkap</label>

@@ -37,6 +37,20 @@
     <?php if (isset($opt) && $opt == 'form') { ?>
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets_sys/') ?>css/select2.css">
     <?php } ?>
+
+    <style media="screen">
+      img#logo-utama{
+        width: 35%;
+      }
+      @media only screen and (max-width: 380px) {
+      img#logo-utama {
+        width: auto;
+      }
+    }
+    img#mobile-bg .mobile-bg{
+      display: none;
+    }
+    </style>
   </head>
   <body>
     <div class="loader-wrapper">
@@ -49,7 +63,7 @@
         <div class="page-main-header">
           <div class="main-header-right row m-0">
             <div class="main-header-left">
-              <div class="logo-wrapper"><a href="<?= base_url(); ?>"><img class="img-fluid" src="<?= base_url('assets_sys/') ?>images/logo/logo-sibatuah.png" alt="<?= $title; ?>"></a></div>
+              <div class="logo-wrapper"><a href="<?= base_url(); ?>"><img id="logo-utama" class="img-fluid" src="<?= base_url('assets_sys/') ?>images/logo/logo.png" alt="<?= $title; ?>"></a></div>
               <div class="dark-logo-wrapper"><a href="<?= base_url(); ?>"><img class="img-fluid" src="<?= base_url('assets_sys/') ?>images/logo/logo-sibatuah.png" alt="<?= $title; ?>"></a></div>
               <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle"></i></div>
             </div>

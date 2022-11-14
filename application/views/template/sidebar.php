@@ -18,28 +18,35 @@
                 <!-- <li><a href="<?= base_url('upload_dokumen') ?>">Unggah Dokumen</a></li> -->
               </ul>
             </li>
+            <li class="sidebar-main-title"> <div> <h6>Extra</h6> </div> </li>
+            <li class="dropdown"><a class="nav-link menu-title <?php if ($this->uri->segment(1) == 'gampong_pengaturan') { echo 'active'; } ?>" href="javascript:void(0)"><i data-feather="layout"></i><span>Pengaturan</span></a>
+              <ul class="nav-submenu menu-content">
+                <li><a href="<?= base_url('gampong_pengaturan') ?>">Konfigurasi</a></li>
+
+              </ul>
+            </li>
           <?php } ?>
           <!-- <li class="dropdown"><a class="nav-link menu-title" href="<?= base_url('berkas_masuk') ?>"><i data-feather="server"></i><span>Daftar Berkas Masuk</span></a></li> -->
-          <li class="dropdown"><a class="nav-link menu-title <?php if ($this->uri->segment(1) == 'surat_kecamatan') { echo 'active'; } ?>" href="javascript:void(0)"><i data-feather="box"></i><span>Buat Surat DDS / ADK</span></a>
-            <ul class="nav-submenu menu-content">
-              <li><a href="<?= base_url('surat_kecamatan') ?>">Daftar Surat</a></li>
-              <li><a href="<?= base_url('surat_kecamatan/sp/adk') ?>">Surat Pengantar (ADK)</a></li>
-              <li><a href="<?= base_url('surat_kecamatan/sr/adk') ?>">Surat Rekomendasi (ADK)</a></li>
-              <li><a href="<?= base_url('surat_kecamatan/spv/adk') ?>">Surat Pernyataan Verifikasi (ADK)</a></li>
-              <li><a href="<?= base_url('surat_kecamatan/sp/dds') ?>">Surat Pengantar (DDS)</a></li>
-              <li><a href="<?= base_url('surat_kecamatan/sr/dds') ?>">Surat Rekomendasi (DDS)</a></li>
-              <li><a href="<?= base_url('surat_kecamatan/spv/dds') ?>">Surat Pernyataan Verifikasi (DDS)</a></li>
-            </ul>
-          </li>
           <?php if ($this->session->userdata('isAdmin') == TRUE) { ?>
-            <li class="dropdown"><a class="nav-link menu-title <?php if ($this->uri->segment(1) == 'ajb') { echo 'active'; } ?>" href="javascript:void(0)"><i data-feather="archive"></i><span>Akta Jual Beli</span></a>
+            <li class="dropdown"><a class="nav-link menu-title <?php if ($this->uri->segment(1) == 'surat_kecamatan') { echo 'active'; } ?>" href="javascript:void(0)"><i data-feather="briefcase"></i><span>Buat Surat DDS / ADK</span></a>
+              <ul class="nav-submenu menu-content">
+                <li><a href="<?= base_url('surat_kecamatan') ?>">Daftar Surat</a></li>
+                <li><a href="<?= base_url('surat_kecamatan/sp/adk') ?>">Surat Pengantar (ADK)</a></li>
+                <li><a href="<?= base_url('surat_kecamatan/sr/adk') ?>">Surat Rekomendasi (ADK)</a></li>
+                <li><a href="<?= base_url('surat_kecamatan/spv/adk') ?>">Surat Pernyataan Verifikasi (ADK)</a></li>
+                <li><a href="<?= base_url('surat_kecamatan/sp/dds') ?>">Surat Pengantar (DDS)</a></li>
+                <li><a href="<?= base_url('surat_kecamatan/sr/dds') ?>">Surat Rekomendasi (DDS)</a></li>
+                <li><a href="<?= base_url('surat_kecamatan/spv/dds') ?>">Surat Pernyataan Verifikasi (DDS)</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a class="nav-link menu-title <?php if ($this->uri->segment(1) == 'ajb') { echo 'active'; } ?>" href="javascript:void(0)"><i data-feather="briefcase"></i><span>Akta Jual Beli</span></a>
               <ul class="nav-submenu menu-content">
                 <li><a href="<?= base_url('ajb/_buat_ajb') ?>">Buat AJB Baru</a></li>
                 <li><a href="<?= base_url('ajb') ?>">Daftar Surat Selesai</a></li>
                 <!-- <li><a href="#">Verifikasi Dokumen</a></li> -->
               </ul>
             </li>
-            <li class="dropdown"><a class="nav-link menu-title <?php if ($this->uri->segment(1) == 'rekomendasi_bantuan') { echo 'active'; } ?>" href="javascript:void(0)"><i data-feather="archive"></i><span>Rekomendasi Bantuan</span></a>
+            <li class="dropdown"><a class="nav-link menu-title <?php if ($this->uri->segment(1) == 'rekomendasi_bantuan') { echo 'active'; } ?>" href="javascript:void(0)"><i data-feather="briefcase"></i><span>Rekomendasi Bantuan</span></a>
               <ul class="nav-submenu menu-content">
                 <li><a href="<?= base_url('rekomendasi_bantuan/_buat') ?>">Buat Surat</a></li>
                 <li><a href="<?= base_url('rekomendasi_bantuan') ?>">Daftar Surat Selesai</a></li>

@@ -387,4 +387,47 @@ class M_crud extends CI_Model{
       return;
     }
   }
+
+  function getPetugasByGampong($gampong)
+  {
+    $this->db->join('_gampong', '_gampong.idG = _penduduk.gampongPid');
+    $this->db->where('gampongPid', $gampong);
+    return $this->db->get('_penduduk');
+  }
+
+  function gampong_petugas($gampong)
+  {
+    $this->db->where('idG', $gampong);
+    return $this->db->get('_gampong')->row();
+  }
+
+  function getJabatanGampong()
+  {
+    $this->db->where('kodeJabatan', 'G');
+    return $this->db->get('_jabatan')->result();
+  }
+
+  function update_jabatan_petugas($gampong, $data_gampong)
+  {
+    $this->db->where('idG', $gampong);
+    return $this->db->update('_gampong', $data_gampong);
+  }
+
+  function update_penduduk_jabatans($petugas, $data)
+  {
+    $this->db->where('idP', $petugas);
+    return $this->db->update('_penduduk', $data);
+  }
+
+  function checkNamaPetugas($id)
+  {
+    $this->db->where('idP', $id);
+    return $this->db->get('_penduduk', 1)->row();
+  }
+
+  function delete_penduduk($id)
+  {
+    $this->db->where('idP', $id);
+    return $this->db->delete('_penduduk');
+  }
 }

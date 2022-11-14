@@ -53,6 +53,162 @@ class Administration extends CI_Controller{
     $this->load->view('main', $data);
   }
 
+  function get_setting_gampong()
+  {
+    $gampong = $this->session->userdata('gampong');
+    $db = $this->crud->getPetugasByGampong($gampong)->result();
+    $data = array(
+      'title' => 'Aparatur Desa / Gampong',
+      'opt'   => 'table',
+      'page'  => 'page/gampong/index',
+      'db'    => $db,
+    );
+    $this->load->view('main', $data);
+  }
+
+  function add_aparatur()
+  {
+    $gampong = $this->session->userdata('gampong');
+
+    $data = array(
+      'title' => 'Tambah Aparatur Desa / Gampong',
+      'opt'   => 'form',
+      'page'  => 'page/gampong/add_aparatur',
+    );
+    $this->load->view('main', $data);
+  }
+
+  function proses_aparatur()
+  {
+    $date = date('Y-m-d');
+    $typeSet = 'lokal';
+    $this->_rules_penduduk();
+
+    if ($this->form_validation->run() == FALSE) {
+      $this->add_aparatur();
+    }else {
+      if ($typeSet == 'lokal') {
+        $_alamatPid = 'LO'.time();
+        $_gampongPid = $this->input->post('gampong',TRUE);
+      }elseif ($typeSet == 'luar') {
+        $_alamatPid = 'LU'.time();
+        $_gampongPid = $this->input->post('last') + 1;
+      }else {
+        $this->add_aparatur();
+      }
+
+      $_penduduk = array(
+        'isUsr'         => 0,
+        'alamatPid'     => $_alamatPid,
+        'gampongPid'    => $this->session->userdata('gampong'),
+        'namaP'         => $this->input->post('nama_lengkap',TRUE),
+        'nikP'          => $this->input->post('nik',TRUE),
+        'jenisKelaminP' => $this->input->post('jenisKelamin',TRUE),
+        'jabatanPid'    => 0,
+        'nomorHpP'      => $this->input->post('hp',TRUE),
+        'createdAt'     => $date,
+      );
+
+      $stepFirst = $this->crud->save_penduduk($_penduduk);
+
+      if ($stepFirst != null) {
+        if ($typeSet == 'lokal') {
+          $_alamat = array(
+            'idA'       => $_alamatPid,
+            'labelA'    => 'lokal kecamatan singkil',
+            'alamatA'   => $this->input->post('alamat'),
+            'createdAt' => $date,
+          );
+          $this->crud->save_alamat($_alamat);
+
+        }elseif ($typeSet == 'luar') {
+          $_alamat = array(
+            'idA'       => $_alamatPid,
+            'labelA'    => 'luar kecamatan singkil',
+            'alamatA'   => $this->input->post('alamat'),
+            'createdAt' => $date,
+          );
+          $this->crud->save_alamat($_alamat);
+
+          $_gampong = array(
+            'idG' => $_gampongPid,
+            'namaG' => $this->input->post('gampong'),
+            'createdAt' => $date,
+            'statusG' => 1,
+            'isLokal' => 1,
+          );
+
+          $this->crud->save_gampong($_gampong);
+        }
+      }
+
+      $this->session->set_flashdata('msg', 'Sukses !');
+      redirect('gampong_pengaturan');
+    }
+  }
+
+  function atur_aparatur()
+  {
+    // $penduduk = $this->crud->checkNamaPetugas($id)
+    $gampong = $this->session->userdata('gampong');
+    $db = $this->crud->gampong_petugas($gampong);
+    $petugas = $this->crud->getPetugasByGampong($gampong)->result();
+    $data = array(
+      'title' => 'Atur Aparatur Desa / Gampong',
+      'opt'   => 'form',
+      'page'  => 'page/gampong/atur_aparatur',
+      'db'    => $db,
+      'petugas'    => $petugas,
+      'jabatan'    => $this->crud->getJabatanGampong(),
+    );
+    $this->load->view('main', $data);
+  }
+
+  function hapus_penduduks($id)
+  {
+    $this->crud->delete_penduduk($id);
+    $this->session->set_flashdata('msg','Berhasil menghapus penduduk');
+    redirect('gampong_pengaturan');
+  }
+
+  function proses_tambah_aparatur()
+  {
+    $gampong = $this->session->userdata('gampong');
+    $petugas = $this->input->post('petugas');
+    $jabatan = $this->input->post('jabatan');
+
+    switch ($jabatan) {
+      case 'G1666458544':
+        $data_gampong = array(
+          'idKaurG' => $petugas,
+          'idJKG'   => $jabatan,
+        );
+        break;
+
+      case 'G1666458694':
+        $data_gampong = array(
+          'idGeuchikG' => $petugas,
+          'idJGG'      => $jabatan,
+        );
+        break;
+
+      case 'G1666458722':
+        $data_gampong = array(
+          'idSekretarisG' => $petugas,
+          'idJSG'         => $jabatan,
+        );
+        break;
+    }
+
+    $data['jabatanPid'] = $jabatan;
+
+    $this->crud->update_jabatan_petugas($gampong,$data_gampong);
+    $this->crud->update_penduduk_jabatans($petugas,$data);
+    $this->session->set_flashdata('msg','Berhasil melakukan konfigurasi');
+    redirect('gampong_pengaturan/_atur');
+
+  }
+
   function penduduk_sub()
   {
     $date = date('Y-m-d');
@@ -1052,7 +1208,8 @@ class Administration extends CI_Controller{
           }
 
           if (!empty($_FILES['f4']['name'])) {
-            if ($this->upload->do_upload('f4')) {
+            if ($this->upload->do_upload('f4')) {    $this->form_validation->set_rules('gampong', 'Kelurahan / Gampong', 'trim|required|min_length[1]', array( 'required' => 'Anda harus mengisi bagian %s', 'min_length' => 'Harap memilih %s' ));
+
               $data_file = $this->upload->data();
               $data['udDdsF4']  = 'DDS_'.$data_file['file_name'].$data_file['file_ext'];
             }
@@ -1563,7 +1720,6 @@ class Administration extends CI_Controller{
     $this->form_validation->set_rules('hp', 'Nomor Hp', 'trim|required|min_length[11]|max_length[16]', array( 'required' => 'Anda harus mengisi bagian %s', 'min_length' => 'Bagian %s minimal 11 karakter', 'max_length' => 'Bagian %s maximal 16 karakter' ));
     $this->form_validation->set_rules('nik', 'Nomor Induk Kependudukan', 'trim|required|min_length[16]|max_length[16]|is_unique[_penduduk.nikP]', array( 'required' => 'Anda harus mengisi bagian %s', 'is_unique' => '%s sudah terdata, harap pastikan data nik yang diisi tidak boleh duplikasi', ));
     $this->form_validation->set_rules('jenisKelamin', 'Jenis Kelamin', 'trim|required', array( 'required' => 'Anda harus mengisi bagian %s', ));
-    $this->form_validation->set_rules('gampong', 'Kelurahan / Gampong', 'trim|required|min_length[1]', array( 'required' => 'Anda harus mengisi bagian %s', 'min_length' => 'Harap memilih %s' ));
     $this->form_validation->set_rules('alamat', 'Alamat', 'trim|required', array( 'required' => 'Anda harus mengisi bagian %s', ));
 
     return;

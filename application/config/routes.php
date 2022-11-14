@@ -120,5 +120,14 @@ $route['ajb'] = 'Admin_Kecamatan/daftarAJB';
 $route['hapus_ajb/(:any)'] = 'Admin_Kecamatan/hapusAjb/$1';
 $route['delete_berkas/(:any)'] = 'Admin_Kecamatan/delete_berkas/$1';
 
+
+$route['gampong_pengaturan'] = 'Administration/get_setting_gampong';
+$route['gampong_pengaturan/_tambah_aparatur'] = 'Administration/add_aparatur';
+$route['gampong_pengaturan/_proses_aparatur'] = 'Administration/proses_aparatur';
+$route['gampong_pengaturan/_atur'] = 'Administration/atur_aparatur';
+$route['gampong_pengaturan/_atur_proses'] = 'Administration/proses_tambah_aparatur';
+$route['gampong_pengaturan/_hapus_penduduks/(:any)'] = 'Administration/hapus_penduduks/$1';
+
+
 $route['404_override'] = 'Setting/error_404';
 $route['translate_uri_dashes'] = FALSE;

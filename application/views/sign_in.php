@@ -10,6 +10,7 @@
             echo base_url('ressLogin');
           } ?>" method="POST" enctype="multipart/form-data">
             <?php if ($this->uri->segment(1) == 'sign_in') { echo "<h4>Login</h4>"; } ?>
+            <img class="bg-img-cover" id="mobile-bg" src="<?= base_url('assets_sys/') ?>images/login/bg-login.png" alt="looginpage">
             <h6><?= $title ?></h6>
             <?php
             echo validation_errors('<div class="alert alert-danger dark alert-dismissible fade show" role="alert">','</div>');

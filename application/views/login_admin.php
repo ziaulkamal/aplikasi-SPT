@@ -35,8 +35,11 @@
 
             <div class="login-card">
               <form class="theme-form login-form" action="<?= base_url($action) ?>" enctype="multipart/form-data" method="POST">
+                <img class="bg-img-cover" id="mobile-bg" src="<?= base_url('assets_sys/') ?>images/login/bg-login.png" alt="looginpage">
                 <h4><?= $title ?></h4>
-                <h6>Selamat datang petugas kecamatan !</h6>
+                <span>Selamat datang petugas kecamatan !</span>
+                <br />
+                <br />
                 <?php if($this->session->flashdata('msg')) { ?>
 
                   <div class="alert alert-success outline alert-dismissible fade show" role="alert">
@@ -59,7 +62,7 @@
                 </div>
 
                 <div class="form-group">
-                  <button class="btn btn-primary btn-block" type="submit">Sign in</button>
+                  <button class="btn btn-primary btn-block" type="submit">Login</button>
                 </div>
               </form>
             </div>
